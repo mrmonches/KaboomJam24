@@ -25,6 +25,7 @@ public class PlayerPlatformerController : MonoBehaviour
     private bool isSprinting;
     private bool isMidair;
     private bool isInteracting;
+    private bool isMixing;
 
     [SerializeField, Tooltip("The buffer between when the player loses contact with the ground and they are still able to jump")]
     private float CoyoteTimer;
@@ -125,8 +126,6 @@ public class PlayerPlatformerController : MonoBehaviour
         isInteracting = false;
     }
 
-    
-
     private void PlayerJump()
     {
         if (currentJumpTime >= 0)
@@ -174,38 +173,46 @@ public class PlayerPlatformerController : MonoBehaviour
         }
     }
 
+    public void SetMixingStatus(bool status)
+    {
+        isMixing = status;
+    }
+
     private void FixedUpdate()
     {
-        if (isSprinting)
+        if (!isMixing) 
         {
-            //_rb2d.velocity = new Vector2(moveValue * SprintMultiplier, Mathf.Max(_rb2d.velocity.y, MaxFallSpeed));
-            _rb2d.velocity = new Vector2(moveValue * SprintMultiplier, _rb2d.velocity.y);
-        }
-        else
-        {
-            //_rb2d.velocity = new Vector2(moveValue, _rb2d.velocity.y);
-            _rb2d.velocity = new Vector2(moveValue, Mathf.Max(_rb2d.velocity.y, -MaxFallSpeed));
-        }
-        
-        if (isMidair && _rb2d.velocity.y < 0) 
-        {
-            _rb2d.gravityScale *= GravityMultiplier;
-        }
-        else
-        {
-            _rb2d.gravityScale = defaultGravity;
-        }
+            if (isSprinting)
+            {
+                //_rb2d.velocity = new Vector2(moveValue * SprintMultiplier, Mathf.Max(_rb2d.velocity.y, MaxFallSpeed));
+                _rb2d.velocity = new Vector2(moveValue * SprintMultiplier, _rb2d.velocity.y);
+            }
+            else
+            {
+                //_rb2d.velocity = new Vector2(moveValue, _rb2d.velocity.y);
+                _rb2d.velocity = new Vector2(moveValue, Mathf.Max(_rb2d.velocity.y, -MaxFallSpeed));
+            }
 
-        if (isJumping)
-        {
-            PlayerJump();
-        }
+            if (isJumping)
+            {
+                PlayerJump();
+            }
 
-        GroundCheck();
+            GroundCheck();
 
-        if (bufferTimeCounter > 0)
-        {
-            bufferTimeCounter -= Time.deltaTime;
+            if (isMidair && _rb2d.velocity.y < 0)
+            {
+                _rb2d.gravityScale *= GravityMultiplier;
+            }
+            else
+            {
+                _rb2d.gravityScale = defaultGravity;
+            }
+
+            if (bufferTimeCounter > 0)
+            {
+                bufferTimeCounter -= Time.deltaTime;
+            }
         }
     }
 
