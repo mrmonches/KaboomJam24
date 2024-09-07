@@ -20,7 +20,7 @@ public class PlayerInventoryController : MonoBehaviour
     {
         switch (type)
         {
-            case DrinkMenuManager.IngredientTypes.Ectoplasm:
+            case DrinkMenuManager.IngredientTypes.Draculum:
                 //InventoryContents[0, 0] += amount;
                 break;
         }

@@ -15,7 +15,7 @@ GameObject:
   - component: {fileID: 4981419440077333463}
   - component: {fileID: 1846888877722417260}
   - component: {fileID: 3077455885297193545}
-  - component: {fileID: 3458712498104645617}
+  - component: {fileID: 2118827906267327461}
   m_Layer: 7
   m_Name: Player
   m_TagString: Player
@@ -78,8 +78,8 @@ SpriteRenderer:
   m_LightmapParameters: {fileID: 0}
   m_SortingLayerID: 0
   m_SortingLayer: 0
-  m_SortingOrder: 0
-  m_Sprite: {fileID: 7482667652216324306, guid: 311925a002f4447b3a28927169b83ea6, type: 3}
+  m_SortingOrder: 3
+  m_Sprite: {fileID: 21300000, guid: 48f5887eaf28795449890f029ed250b7, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
   m_FlipY: 0
@@ -105,7 +105,7 @@ Rigidbody2D:
   m_Mass: 1
   m_LinearDrag: 0
   m_AngularDrag: 0.05
-  m_GravityScale: 1
+  m_GravityScale: 2.5
   m_Material: {fileID: 6200000, guid: aa126cddbc60eb64ba19037996745778, type: 2}
   m_IncludeLayers:
     serializedVersion: 2
@@ -204,23 +204,22 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: fe474a5facaa4734e904174dc000c3f2, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  MoveSpeed: 4
-  JumpForce: 8
-  SprintMultiplier: 2
-  MaxFallSpeed: 15
-  GravityMultiplier: 1.05
-  defaultGravity: 1
+  MoveSpeed: 6
+  JumpForce: 10
+  SprintMultiplier: 1.5
+  MaxFallSpeed: 10
+  GravityMultiplier: 1
+  defaultGravity: 2.5
   InvinsibilityTimer: 3
   CoyoteTimer: 0.2
   BufferTimer: 0.2
-  JumpTimer: 0.1
+  JumpTimer: 0.4
   BoxCastSize: {x: 0.9, y: 0.2}
   GroundDistance: 0.44
   GroundMask:
     serializedVersion: 2
     m_Bits: 64
   DrinkMenu: {fileID: 0}
-  InteractionController: {fileID: 3458712498104645617}
 --- !u!114 &3077455885297193545
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -236,19 +235,24 @@ MonoBehaviour:
   InventoryContents: 090000000900000009000000090000000900000009000000
   MaxItemAmount: 9
   HazardDecrement: 3
---- !u!114 &3458712498104645617
-MonoBehaviour:
+--- !u!95 &2118827906267327461
+Animator:
+  serializedVersion: 5
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 7817397098169624107}
   m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 707ff2bc3eb30404d916452ace565606, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  PlayerObject: {fileID: 7817397098169624107}
-  barController: {fileID: 0}
-  Increment: 204
-  Circle: {fileID: 0}
+  m_Avatar: {fileID: 0}
+  m_Controller: {fileID: 9100000, guid: 3eece56df9fb257439f63944b1528273, type: 2}
+  m_CullingMode: 0
+  m_UpdateMode: 0
+  m_ApplyRootMotion: 0
+  m_LinearVelocityBlending: 0
+  m_StabilizeFeet: 0
+  m_WarningMessage: 
+  m_HasTransformHierarchy: 1
+  m_AllowConstantClipSamplingOptimization: 1
+  m_KeepAnimatorStateOnDisable: 0
+  m_WriteDefaultValuesOnDisable: 0
