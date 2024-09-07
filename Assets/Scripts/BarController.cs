@@ -25,13 +25,22 @@ public class BarController : MonoBehaviour
             playerController = collision.gameObject.GetComponent<PlayerPlatformerController>();
 
             playerInventoryController = playerController.GetComponent<PlayerInventoryController>();
+
+            playerController.InteractiveUIStatus(true);
         }
+    }
+
+    public float GetDelayTimer()
+    {
+        return DelayTimer;
     }
 
     private void OnTriggerExit2D(Collider2D collision)
     {
         if (collision.gameObject.GetComponent<PlayerPlatformerController>() == playerController)
         {
+            playerController.InteractiveUIStatus(false);
+
             playerController = null;
 
             playerInventoryController = null;
