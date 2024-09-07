@@ -121,7 +121,9 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   isOrdering: 0
+  isGone: 0
   order: {fileID: 0}
+  TimeUntilBack: 1
 --- !u!70 &3704070320326889346
 CapsuleCollider2D:
   m_ObjectHideFlags: 0
