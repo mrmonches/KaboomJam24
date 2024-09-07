@@ -1046,6 +1046,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 746557001e4569d46a880d2d7ee8f8cf, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  isOrdering: 0
+  order: {fileID: 0}
 --- !u!1 &1216928069
 GameObject:
   m_ObjectHideFlags: 0
@@ -1356,6 +1358,62 @@ PrefabInstance:
     - target: {fileID: 171607600408496895, guid: 5b9a73ac6adce494498954fd5d9d8a64, type: 3}
       propertyPath: m_AnchoredPosition.y
       value: -295
+      objectReference: {fileID: 0}
+    - target: {fileID: 1841258492835002444, guid: 5b9a73ac6adce494498954fd5d9d8a64, type: 3}
+      propertyPath: possibleIngredients.Array.data[0].sour
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 1841258492835002444, guid: 5b9a73ac6adce494498954fd5d9d8a64, type: 3}
+      propertyPath: possibleIngredients.Array.data[2].sour
+      value: 4
+      objectReference: {fileID: 0}
+    - target: {fileID: 1841258492835002444, guid: 5b9a73ac6adce494498954fd5d9d8a64, type: 3}
+      propertyPath: possibleIngredients.Array.data[3].sour
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 1841258492835002444, guid: 5b9a73ac6adce494498954fd5d9d8a64, type: 3}
+      propertyPath: possibleIngredients.Array.data[4].sour
+      value: -3
+      objectReference: {fileID: 0}
+    - target: {fileID: 1841258492835002444, guid: 5b9a73ac6adce494498954fd5d9d8a64, type: 3}
+      propertyPath: possibleIngredients.Array.data[5].sour
+      value: -1
+      objectReference: {fileID: 0}
+    - target: {fileID: 1841258492835002444, guid: 5b9a73ac6adce494498954fd5d9d8a64, type: 3}
+      propertyPath: possibleIngredients.Array.data[1].spicy
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 1841258492835002444, guid: 5b9a73ac6adce494498954fd5d9d8a64, type: 3}
+      propertyPath: possibleIngredients.Array.data[2].spicy
+      value: -3
+      objectReference: {fileID: 0}
+    - target: {fileID: 1841258492835002444, guid: 5b9a73ac6adce494498954fd5d9d8a64, type: 3}
+      propertyPath: possibleIngredients.Array.data[2].sweet
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 1841258492835002444, guid: 5b9a73ac6adce494498954fd5d9d8a64, type: 3}
+      propertyPath: possibleIngredients.Array.data[3].spicy
+      value: 4
+      objectReference: {fileID: 0}
+    - target: {fileID: 1841258492835002444, guid: 5b9a73ac6adce494498954fd5d9d8a64, type: 3}
+      propertyPath: possibleIngredients.Array.data[3].sweet
+      value: -3
+      objectReference: {fileID: 0}
+    - target: {fileID: 1841258492835002444, guid: 5b9a73ac6adce494498954fd5d9d8a64, type: 3}
+      propertyPath: possibleIngredients.Array.data[4].spicy
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 1841258492835002444, guid: 5b9a73ac6adce494498954fd5d9d8a64, type: 3}
+      propertyPath: possibleIngredients.Array.data[4].sweet
+      value: 4
+      objectReference: {fileID: 0}
+    - target: {fileID: 1841258492835002444, guid: 5b9a73ac6adce494498954fd5d9d8a64, type: 3}
+      propertyPath: possibleIngredients.Array.data[5].spicy
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 1841258492835002444, guid: 5b9a73ac6adce494498954fd5d9d8a64, type: 3}
+      propertyPath: possibleIngredients.Array.data[5].sweet
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 1988901670462106998, guid: 5b9a73ac6adce494498954fd5d9d8a64, type: 3}
       propertyPath: m_AnchorMax.y

@@ -203,7 +203,7 @@ public class PlayerPlatformerController : MonoBehaviour
         if (!isMixing && order != null)
         {
             DrinkMenu.SetActive(true);
-            DrinkMenu.GetComponent<DrinkMenuManager>().NewOrder(order);
+            DrinkMenu.GetComponentInChildren<DrinkMenuManager>().NewOrder(order);
             isMixing = true;
         }
         else
