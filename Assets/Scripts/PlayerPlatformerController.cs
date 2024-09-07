@@ -11,9 +11,15 @@ public class PlayerPlatformerController : MonoBehaviour
     private InputAction jumpAction;
 
     [SerializeField] private float MoveSpeed;
-    [SerializeField] private Vector2 JumpForce;
+    [SerializeField] private float JumpForce;
 
     private float moveValue;
+
+    private bool isJumping;
+    private float jumpValue;
+
+    [SerializeField] private float JumpTimer;
+    [SerializeField] private float currentJumpTime;
 
     private bool canJump;
 
@@ -31,10 +37,14 @@ public class PlayerPlatformerController : MonoBehaviour
         moveAction.started += MoveAction_started;
         moveAction.canceled += MoveAction_canceled;
 
+        jumpAction.started += JumpAction_started;
+        jumpAction.canceled += JumpAction_canceled;
+
         _rb2d = GetComponent<Rigidbody2D>();
 
         canJump = true;
     }
+
     private void MoveAction_started(InputAction.CallbackContext obj)
     {
         moveValue = moveAction.ReadValue<float>() * MoveSpeed;
@@ -45,22 +55,56 @@ public class PlayerPlatformerController : MonoBehaviour
         moveValue = 0f;
     }
 
-    private void OnJump()
+    private void JumpAction_started(InputAction.CallbackContext obj)
     {
-        if (canJump)
+        if (canJump && !isJumping)
         {
-            _rb2d.AddForce(JumpForce, ForceMode2D.Impulse);
+            isJumping = true;
+        }
+    }
+
+    private void JumpAction_canceled(InputAction.CallbackContext obj)
+    {
+        if (isJumping)
+        {
+            isJumping = false;
+
+            currentJumpTime = JumpTimer;
+        }
+    }
+
+    private void PlayerJump()
+    {
+        if (currentJumpTime > 0)
+        {
+            currentJumpTime -= Time.deltaTime;
+
+            _rb2d.velocity = new Vector2(_rb2d.velocity.x, JumpForce);
+        }
+        else
+        {
+            currentJumpTime = JumpTimer;
+
+            isJumping = false;
         }
     }
 
     private void FixedUpdate()
     {
         _rb2d.velocity = new Vector2(moveValue, _rb2d.velocity.y);
+
+        if (isJumping)
+        {
+            PlayerJump();
+        }
     }
 
     private void OnDestroy()
     {
         moveAction.started -= MoveAction_started;
         moveAction.canceled -= MoveAction_canceled;
+
+        jumpAction.started -= JumpAction_started;
+        jumpAction.canceled -= JumpAction_canceled;
     }
 }
