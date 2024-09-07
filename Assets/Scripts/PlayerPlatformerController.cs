@@ -1,6 +1,3 @@
-using System.Collections;
-using System.Collections.Generic;
-using Unity.VisualScripting;
 using UnityEngine;
 using UnityEngine.InputSystem;
 
@@ -22,7 +19,7 @@ public class PlayerPlatformerController : MonoBehaviour
     private float coyoteTimeCounter;
 
     [SerializeField] private float BufferTimer;
-    [SerializeField] private float bufferTimeCounter;
+     private float bufferTimeCounter;
 
     [SerializeField] private float JumpTimer;
     private float currentJumpTime;
@@ -110,6 +107,11 @@ public class PlayerPlatformerController : MonoBehaviour
         if (BoxCasthit.transform != null)
         {
             coyoteTimeCounter = CoyoteTimer;
+
+            if (bufferTimeCounter > 0)
+            {
+                PlayerJump();
+            }
         }
         else
         {
@@ -124,7 +126,7 @@ public class PlayerPlatformerController : MonoBehaviour
     {
         _rb2d.velocity = new Vector2(moveValue, _rb2d.velocity.y);
 
-        if (isJumping || bufferTimeCounter > 0)
+        if (isJumping)
         {
             PlayerJump();
         }
