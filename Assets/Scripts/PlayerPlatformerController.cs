@@ -8,16 +8,24 @@ public class PlayerPlatformerController : MonoBehaviour
     private InputAction moveAction;
     private InputAction jumpAction;
     private InputAction sprintAction;
+    private InputAction interactAction;
 
     [SerializeField] private float MoveSpeed;
     [SerializeField] private float JumpForce;
     [SerializeField] private float SprintMultiplier;
+    [SerializeField] private float MaxFallSpeed;
+
+    [SerializeField] private float GravityMultiplier;
+    private float defaultGravity = 1f;
 
     private float moveValue;
 
+    // Variables that are redundant but help clarity in conditional statements
     private bool isJumping;
-
     private bool isSprinting;
+    private bool isMidair;
+    private bool isInteracting;
+    private static bool isMixing;
 
     [SerializeField, Tooltip("The buffer between when the player loses contact with the ground and they are still able to jump")]
     private float CoyoteTimer;
@@ -35,6 +43,8 @@ public class PlayerPlatformerController : MonoBehaviour
     [SerializeField] private float GroundDistance;
     [SerializeField] private LayerMask GroundMask;
 
+    [SerializeField] private GameObject DrinkMenu;
+
     private Rigidbody2D _rb2d;
 
     private void Awake()
@@ -46,6 +56,7 @@ public class PlayerPlatformerController : MonoBehaviour
         moveAction = _playerInput.currentActionMap.FindAction("Move");
         jumpAction = _playerInput.currentActionMap.FindAction("Jump");
         sprintAction = _playerInput.currentActionMap.FindAction("Sprint");
+        interactAction = _playerInput.currentActionMap.FindAction("Interact");
 
         moveAction.started += MoveAction_started;
         moveAction.canceled += MoveAction_canceled;
@@ -55,6 +66,9 @@ public class PlayerPlatformerController : MonoBehaviour
 
         sprintAction.started += SprintAction_started;
         sprintAction.canceled += SprintAction_canceled;
+
+        interactAction.started += InteractAction_started;
+        interactAction.canceled += InteractAction_canceled;
 
         _rb2d = GetComponent<Rigidbody2D>();
 
@@ -102,6 +116,16 @@ public class PlayerPlatformerController : MonoBehaviour
     private void SprintAction_canceled(InputAction.CallbackContext obj)
     {
         isSprinting = false;
+    }   
+    
+    private void InteractAction_started(InputAction.CallbackContext obj)
+    {
+        isInteracting = true;
+    }
+
+    private void InteractAction_canceled(InputAction.CallbackContext obj)
+    {
+        isInteracting = false;
     }
 
     private void PlayerJump()
@@ -120,6 +144,11 @@ public class PlayerPlatformerController : MonoBehaviour
         }
     }
 
+    public bool GetInteractionStatus()
+    {
+        return isInteracting;
+    }
+
     private void GroundCheck()
     {
         RaycastHit2D BoxCasthit = BoxCastDrawer.BoxCastAndDraw(transform.position, BoxCastSize, 0, Vector2.down, GroundDistance, GroundMask);
@@ -132,6 +161,8 @@ public class PlayerPlatformerController : MonoBehaviour
             {
                 PlayerJump();
             }
+
+            isMidair = false;
         }
         else
         {
@@ -139,31 +170,61 @@ public class PlayerPlatformerController : MonoBehaviour
             {
                 coyoteTimeCounter -= Time.deltaTime;
             }
+
+            isMidair = true;
         }
+    }
+
+    public void ManageDrinkMenuStatus()
+    {
+        if (!isMixing)
+        {
+            DrinkMenu.SetActive(true);
+
+            isMixing = true;
+        }
+    }
+
+    public static void SetMixingStatus(bool status)
+    {
+        isMixing = status;
     }
 
     private void FixedUpdate()
     {
-        if (isSprinting)
+        if (!isMixing) 
         {
-            _rb2d.velocity = new Vector2(moveValue * SprintMultiplier, _rb2d.velocity.y);
-        }
-        else
-        {
-            _rb2d.velocity = new Vector2(moveValue, _rb2d.velocity.y);
-        }
-        
+            if (isSprinting)
+            {
+                //_rb2d.velocity = new Vector2(moveValue * SprintMultiplier, Mathf.Max(_rb2d.velocity.y, MaxFallSpeed));
+                _rb2d.velocity = new Vector2(moveValue * SprintMultiplier, _rb2d.velocity.y);
+            }
+            else
+            {
+                //_rb2d.velocity = new Vector2(moveValue, _rb2d.velocity.y);
+                _rb2d.velocity = new Vector2(moveValue, Mathf.Max(_rb2d.velocity.y, -MaxFallSpeed));
+            }
 
-        if (isJumping)
-        {
-            PlayerJump();
-        }
+            if (isJumping)
+            {
+                PlayerJump();
+            }
 
-        GroundCheck();
+            GroundCheck();
 
-        if (bufferTimeCounter > 0)
-        {
-            bufferTimeCounter -= Time.deltaTime;
+            if (isMidair && _rb2d.velocity.y < 0)
+            {
+                _rb2d.gravityScale *= GravityMultiplier;
+            }
+            else
+            {
+                _rb2d.gravityScale = defaultGravity;
+            }
+
+            if (bufferTimeCounter > 0)
+            {
+                bufferTimeCounter -= Time.deltaTime;
+            }
         }
     }
 
@@ -174,5 +235,11 @@ public class PlayerPlatformerController : MonoBehaviour
 
         jumpAction.started -= JumpAction_started;
         jumpAction.canceled -= JumpAction_canceled;
+
+        sprintAction.started -= SprintAction_started;
+        sprintAction.canceled -= SprintAction_canceled;
+
+        interactAction.started -= InteractAction_started;
+        interactAction.canceled -= InteractAction_canceled;
     }
 }
