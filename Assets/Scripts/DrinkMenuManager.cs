@@ -1,7 +1,11 @@
 using System.Collections;
 using System.Collections.Generic;
+using System.Net.NetworkInformation;
 using System.Threading;
+using TMPro;
+using UnityEditor.ShaderGraph.Drawing;
 using UnityEngine;
+using UnityEngine.UI;
 
 public class DrinkMenuManager : MonoBehaviour
 {
@@ -18,17 +22,23 @@ public class DrinkMenuManager : MonoBehaviour
     [SerializeField, Header("Enter all the possible ingredients here"), 
         Tooltip("Enum is ingredient name, then add the ingredient's stats into the three digits")] 
     private List<Ingredient> possibleIngredients = new List<Ingredient>();
+
     
-    [SerializeField] private List<Ingredient> currentDrink = new List<Ingredient>();
+    [SerializeField, Header("Debugging and refrences")] private List<Ingredient> currentDrink = new List<Ingredient>();
 
     //sweet is x, sour is y, spicy is z
     [SerializeField] private Vector3 currentOrder;
     [SerializeField] private Vector3 currentDrinkStats;
 
+    [SerializeField] private GameObject sweetText;
+    [SerializeField] private GameObject sourText;
+    [SerializeField] private GameObject saltyText;
+    
     // Start is called before the first frame update
     private void Awake()
     {
         currentDrink.Clear();
+        UpdateText();
     }
 
     public void AddIngredient (int IngredientEnumNumber)
@@ -45,20 +55,22 @@ public class DrinkMenuManager : MonoBehaviour
                 count++;
             }
             currentDrink.Insert(count, possibleIngredients[IngredientEnumNumber]);
+            
+            currentDrinkStats += new Vector3(possibleIngredients[IngredientEnumNumber].getSweet(),
+                possibleIngredients[IngredientEnumNumber].getSour(), 
+                possibleIngredients[IngredientEnumNumber].getSpicy());
+            
             UpdateText();
         }
-
     }
-
     private void UpdateText()
     {
-
+        sweetText.GetComponent<TMP_Text>().text = currentDrinkStats.x.ToString();
+        sourText.GetComponent<TMP_Text>().text = currentDrinkStats.y.ToString();
+        saltyText.GetComponent<TMP_Text>().text = currentDrinkStats.z.ToString();
     }
     public void CompleteDrink()
     {
-        foreach (Ingredient ing in currentDrink) {
-            currentDrinkStats += new Vector3(ing.getSweet(), ing.getSour(), ing.getSpicy());
-        }
         if (currentDrinkStats.x < 0)
         {
             currentDrinkStats.x = 0;
