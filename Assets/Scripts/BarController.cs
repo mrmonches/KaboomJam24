@@ -11,6 +11,10 @@ public class BarController : MonoBehaviour
 
     [SerializeField] private PlayerInventoryController playerInventoryController;
 
+    [SerializeField] private AudioClip RestockClip;
+
+    [SerializeField] private AudioSource _audioSource;
+
     private PlayerPlatformerController playerController;
 
     private void Awake()
@@ -51,6 +55,7 @@ public class BarController : MonoBehaviour
         if (!canRestock)
         {
             playerInventoryController.FullRestock();
+            _audioSource.PlayOneShot(RestockClip);
             yield return new WaitForSeconds(CooldownTimer);
             print("allowed to restock");
             canRestock = true;
