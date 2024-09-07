@@ -42,16 +42,23 @@ public class DrinkMenuManager : MonoBehaviour
     [SerializeField] private GameObject orderSourText;
     [SerializeField] private GameObject orderSaltyText;
 
+    private int[] inventory = new int[6];
+
     // Start is called before the first frame update
     private void Awake()
     {
         currentDrink.Clear();
+        for (int i = 0; i < 6; i++)
+        {
+            inventory[i] = FindObjectOfType<PlayerInventoryController>().InventoryContents[i];
+        }
         UpdateText();
+       
     }
 
     public void AddIngredient (int IngredientEnumNumber)
     {
-        if (currentDrink.Count < 5)
+        if (currentDrink.Count < 5 )
         {
             int count = 0;
             while (count < currentDrink.Count)

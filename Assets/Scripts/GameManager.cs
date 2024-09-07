@@ -32,6 +32,11 @@ public class GameManager : MonoBehaviour
        
 
     }
+
+    public bool hasReachedQuota()
+    {
+        return money >= maxMoney;
+    }
     public void DrinkCompleted(int profit)
     {
         money += profit;
