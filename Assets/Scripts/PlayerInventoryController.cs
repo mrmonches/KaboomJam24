@@ -5,7 +5,7 @@ using Random = UnityEngine.Random;
 public class PlayerInventoryController : MonoBehaviour
 {
     // Unity can't serialize or draw a 2D array, nothing will happen
-    [SerializeField] private int[] InventoryContents = {9, 9, 9, 9, 9, 9};
+    public int[] InventoryContents = {9, 9, 9, 9, 9, 9};
 
     [SerializeField] private int MaxItemAmount;
     [SerializeField] private int HazardDecrement;
