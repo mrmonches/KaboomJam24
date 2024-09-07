@@ -383,7 +383,7 @@ Transform:
   - {fileID: 2170151933014354391}
   - {fileID: 3309175680885640423}
   m_Father: {fileID: 0}
-  m_RootOrder: 0
+  m_RootOrder: -1
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &220341415399679630
 GameObject:
@@ -5323,7 +5323,7 @@ MonoBehaviour:
   - {fileID: 8688413686106693843}
   - {fileID: 8255270647949633026}
   - {fileID: 4317530285246252766}
-  customerPortrait: {fileID: 0}
+  customerPortrait: {fileID: 8411504233378200720}
   orderSweetText: {fileID: 2758337056107329645}
   orderSourText: {fileID: 3281453540694543699}
   orderSaltyText: {fileID: 6594462283895512245}

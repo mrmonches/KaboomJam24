@@ -37,7 +37,7 @@ public class DrinkMenuManager : MonoBehaviour
     [SerializeField] private GameObject saltyText;
     [SerializeField] private List<GameObject> DrinkLayers;
 
-    [SerializeField] private Sprite customerPortrait;
+    [SerializeField] private Image customerPortrait;
     [SerializeField] private GameObject orderSweetText;
     [SerializeField] private GameObject orderSourText;
     [SerializeField] private GameObject orderSaltyText;
@@ -132,19 +132,21 @@ public class DrinkMenuManager : MonoBehaviour
     }
     public void CloseMenu()
     {
-        
+        FindObjectOfType<PlayerPlatformerController>().ManageDrinkMenuStatus(null);
     }
 
-    public void NewOrder(Vector3 order, Sprite spr)
+    public void NewOrder(DrinkData order)
     {
-        currentOrder = order;
+        currentOrder = order.GetDrinkContents();
 
         orderSweetText.GetComponent<TMP_Text>().text = currentOrder.x.ToString();
         orderSourText.GetComponent<TMP_Text>().text = currentOrder.y.ToString();
         orderSaltyText.GetComponent<TMP_Text>().text = currentOrder.z.ToString();
 
-        customerPortrait.GetComponent<Image>().sprite = spr;
-
+        if (order.GetDrinkSprite() != null) 
+        {
+            customerPortrait.GetComponent<Image>().sprite = order.GetDrinkSprite();
+        }
         UpdateText();
     }
 }

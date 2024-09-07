@@ -16,7 +16,7 @@ public class PlayerPlatformerController : MonoBehaviour
     [SerializeField] private float MaxFallSpeed;
 
     [SerializeField] private float GravityMultiplier;
-    private float defaultGravity = 1f;
+    [SerializeField] private float defaultGravity = 1f;
 
     [SerializeField] private float InvinsibilityTimer;
     private float invinsibilityCounter;
@@ -198,19 +198,25 @@ public class PlayerPlatformerController : MonoBehaviour
         }
     }
 
-    public void ManageDrinkMenuStatus()
+    public void ManageDrinkMenuStatus(DrinkData order)
     {
-        if (!isMixing)
+        if (!isMixing && order != null)
         {
             DrinkMenu.SetActive(true);
-
+            DrinkMenu.GetComponent<DrinkMenuManager>().NewOrder(order);
             isMixing = true;
+        }
+        else
+        {
+            isMixing = false;
+            DrinkMenu.SetActive(false);
         }
     }
 
     public static void SetMixingStatus(bool status)
     {
         isMixing = status;
+        
     }
 
     private void FixedUpdate()
