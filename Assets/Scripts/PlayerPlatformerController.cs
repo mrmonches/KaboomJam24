@@ -19,7 +19,7 @@ public class PlayerPlatformerController : MonoBehaviour
     [SerializeField] private float defaultGravity = 1f;
 
     [SerializeField] private float InvinsibilityTimer;
-    private float invinsibilityCounter;
+    [SerializeField] private float invinsibilityCounter;
 
     private float moveValue;
 
@@ -60,6 +60,11 @@ public class PlayerPlatformerController : MonoBehaviour
     [SerializeField] private AudioClip JumpClip;
 
     private SpriteRenderer _spriteRenderer;
+
+    private bool decreaseOpacity;
+    [SerializeField] private float opacityChange;
+    [SerializeField] private float opacityTimer;
+    private float opacityCounter;
 
     private void Awake()
     {
@@ -192,7 +197,24 @@ public class PlayerPlatformerController : MonoBehaviour
         {
             invinsibilityCounter = InvinsibilityTimer;
 
+            decreaseOpacity = true;
+
+            opacityCounter = opacityTimer;
+
             playerInventory.LoseItems();
+        }
+    }
+
+    private void IFrameOpacityEffect()
+    {
+        if (decreaseOpacity)
+        {
+            _spriteRenderer.color = new Color(1, 1, 1, _spriteRenderer.color.a - opacityChange);
+        }
+
+        if (!decreaseOpacity)
+        {
+            _spriteRenderer.color = new Color(1, 1, 1, _spriteRenderer.color.a + opacityChange);
         }
     }
 
@@ -297,7 +319,25 @@ public class PlayerPlatformerController : MonoBehaviour
             if (invinsibilityCounter > 0)
             {
                 invinsibilityCounter -= Time.deltaTime;
+
+                IFrameOpacityEffect();
+
+                opacityCounter -= Time.deltaTime;
+
+                if (opacityCounter < 0)
+                {
+                    opacityCounter = opacityTimer;
+                    decreaseOpacity = !decreaseOpacity;
+                }
             }
+            else
+            {
+                _spriteRenderer.color = new Color(1, 1, 1, 1);
+            }
+        }
+        else
+        {
+            _rb2d.velocity = Vector2.zero;
         }
     }
 
