@@ -1096,7 +1096,8 @@ GameObject:
   - component: {fileID: 716676187227956611}
   - component: {fileID: 9042922642925126091}
   - component: {fileID: 6591839797269921270}
-  m_Layer: 5
+  - component: {fileID: 6786926117197284802}
+  m_Layer: 0
   m_Name: the glass
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -1161,6 +1162,18 @@ MonoBehaviour:
   m_FillOrigin: 0
   m_UseSpriteMesh: 0
   m_PixelsPerUnitMultiplier: 1
+--- !u!225 &6786926117197284802
+CanvasGroup:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2360331882522432684}
+  m_Enabled: 1
+  m_Alpha: 1
+  m_Interactable: 0
+  m_BlocksRaycasts: 0
+  m_IgnoreParentGroups: 0
 --- !u!1 &2465042965180120886
 GameObject:
   m_ObjectHideFlags: 0
@@ -1358,7 +1371,7 @@ GameObject:
   - component: {fileID: 3354787833066445238}
   - component: {fileID: 1388947753610988456}
   - component: {fileID: 4457626424521809768}
-  m_Layer: 0
+  m_Layer: 5
   m_Name: Ingredient 2
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -2234,7 +2247,7 @@ GameObject:
   - component: {fileID: 6138636726517333253}
   - component: {fileID: 4697508851175583705}
   - component: {fileID: 3430203171846971999}
-  m_Layer: 0
+  m_Layer: 5
   m_Name: Ingredient 5
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -2707,7 +2720,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 5412867570472627349}
-  m_Layer: 0
+  m_Layer: 5
   m_Name: Ingredients
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -4125,7 +4138,7 @@ GameObject:
   - component: {fileID: 2434834999912761621}
   - component: {fileID: 2707366580816588689}
   - component: {fileID: 6123531845550411449}
-  m_Layer: 0
+  m_Layer: 5
   m_Name: Ingredient 4
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -4334,7 +4347,7 @@ GameObject:
   - component: {fileID: 3371657246093741306}
   - component: {fileID: 3857625125341231471}
   - component: {fileID: 9162012712653670874}
-  m_Layer: 0
+  m_Layer: 5
   m_Name: Ingredient 3
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -4467,7 +4480,7 @@ GameObject:
   - component: {fileID: 4576713534225129591}
   - component: {fileID: 4858630144481947662}
   - component: {fileID: 4148996996723355872}
-  m_Layer: 0
+  m_Layer: 5
   m_Name: Ingredient 1
   m_TagString: Untagged
   m_Icon: {fileID: 0}

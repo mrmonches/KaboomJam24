@@ -21,13 +21,18 @@ public class GameManager : MonoBehaviour
     {
         foreach (CustomerController customer in customers)
         {
-            if (availableDrinks.Count == 0)
+            if (availableDrinks.Count <= 0)
             {
-                availableDrinks = drinks;
+                foreach (DrinkData drink in drinks)
+                {
+                    availableDrinks.Add(drink);
+                }
             }
-            int rand = Random.Range(0, drinks.Count);
-            customer.setOrder(drinks[rand]);
-            drinks.RemoveAt(rand);
+            int rand = Random.Range(0, availableDrinks.Count);
+            Debug.Log(rand + " " + availableDrinks[rand].getDrinkName());
+            customer.setOrder(availableDrinks[rand]);
+            availableDrinks.RemoveAt(rand);
+            
         }
        
 
