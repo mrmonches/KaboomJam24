@@ -158,6 +158,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   MoveSpeed: 6
   JumpForce: 14
+  SprintMultiplier: 2
   CoyoteTimer: 0.2
   BufferTimer: 0.2
   JumpTimer: 0.1
