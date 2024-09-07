@@ -18682,6 +18682,10 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 573002630127754005, guid: 2c85a70ac92581d4689bf95b49b94eb9, type: 3}
+      propertyPath: m_SortingOrder
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 3721029301475731122, guid: 2c85a70ac92581d4689bf95b49b94eb9, type: 3}
       propertyPath: m_Name
       value: DefaultSpirit
@@ -18692,11 +18696,11 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 3739202849711319147, guid: 2c85a70ac92581d4689bf95b49b94eb9, type: 3}
       propertyPath: m_LocalPosition.x
-      value: -0.8463365
+      value: 5
       objectReference: {fileID: 0}
     - target: {fileID: 3739202849711319147, guid: 2c85a70ac92581d4689bf95b49b94eb9, type: 3}
       propertyPath: m_LocalPosition.y
-      value: -6.2482076
+      value: -10
       objectReference: {fileID: 0}
     - target: {fileID: 3739202849711319147, guid: 2c85a70ac92581d4689bf95b49b94eb9, type: 3}
       propertyPath: m_LocalPosition.z
