@@ -616,6 +616,7 @@ GameObject:
   - component: {fileID: 1897850158}
   - component: {fileID: 1897850160}
   - component: {fileID: 1897850157}
+  - component: {fileID: 1897850161}
   m_Layer: 0
   m_Name: Player
   m_TagString: Untagged
@@ -705,7 +706,6 @@ MonoBehaviour:
   MoveSpeed: 4
   JumpForce: 8
   SprintMultiplier: 2
-  IsSprinting: 0
   CoyoteTimer: 0.2
   BufferTimer: 0.2
   JumpTimer: 0.1
@@ -816,3 +816,15 @@ MonoBehaviour:
   m_DefaultActionMap: PlatformControls
   m_SplitScreenIndex: -1
   m_Camera: {fileID: 0}
+--- !u!114 &1897850161
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1897850154}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: eb0e9c55e14820c4d9742ba75e16cb8e, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
