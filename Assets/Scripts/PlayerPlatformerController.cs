@@ -22,7 +22,7 @@ public class PlayerPlatformerController : MonoBehaviour
     private float coyoteTimeCounter;
 
     [SerializeField] private float BufferTimer;
-    private float bufferTimeCounter;
+    [SerializeField] private float bufferTimeCounter;
 
     [SerializeField] private float JumpTimer;
     private float currentJumpTime;
@@ -65,7 +65,9 @@ public class PlayerPlatformerController : MonoBehaviour
 
     private void JumpAction_started(InputAction.CallbackContext obj)
     {
-        if (coyoteTimeCounter > 0 && !isJumping)
+        bufferTimeCounter = BufferTimer;
+
+        if (coyoteTimeCounter > 0 && !isJumping && bufferTimeCounter > 0)
         {
             isJumping = true;
 
@@ -122,12 +124,17 @@ public class PlayerPlatformerController : MonoBehaviour
     {
         _rb2d.velocity = new Vector2(moveValue, _rb2d.velocity.y);
 
-        if (isJumping)
+        if (isJumping || bufferTimeCounter > 0)
         {
             PlayerJump();
         }
 
         GroundCheck();
+
+        if (bufferTimeCounter > 0)
+        {
+            bufferTimeCounter -= Time.deltaTime;
+        }
     }
 
     private void OnDestroy()

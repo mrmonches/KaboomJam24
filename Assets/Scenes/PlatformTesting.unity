@@ -704,10 +704,10 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   MoveSpeed: 4
   JumpForce: 8
-  CoyoteTime: 0.2
-  coyoteTimeCounter: 0
+  CoyoteTimer: 0.2
+  BufferTimer: 0.2
+  bufferTimeCounter: 0
   JumpTimer: 0.1
-  currentJumpTime: 0
   BoxCastSize: {x: 0.9, y: 0.2}
   GroundDistance: 0.44
   GroundMask:
