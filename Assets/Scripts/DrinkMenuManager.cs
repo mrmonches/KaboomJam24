@@ -145,6 +145,7 @@ public class DrinkMenuManager : MonoBehaviour
             Debug.Log("order complete");
             orderComplete = true;
             GameObject.FindGameObjectWithTag("Manager").GetComponent<GameManager>().DrinkCompleted(IngredientProfit);
+            currentCustomer.CustomerComplete();
         }
         else
         {
