@@ -21,7 +21,7 @@ public class CustomerController : MonoBehaviour
     {
         if (playerController != null && playerController.GetInteractionStatus())
         {
-            print("into mixing");
+            playerController.ManageDrinkMenuStatus();
         }
     }
 }

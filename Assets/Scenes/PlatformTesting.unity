@@ -1051,6 +1051,10 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 1846888877722417260, guid: ff4ee980122deaf4591f2d282cf37ef8, type: 3}
+      propertyPath: DrinkMenu
+      value: 
+      objectReference: {fileID: 8337848391119399340}
     - target: {fileID: 7817397098169624107, guid: ff4ee980122deaf4591f2d282cf37ef8, type: 3}
       propertyPath: m_Name
       value: Player
@@ -1316,5 +1320,10 @@ PrefabInstance:
 --- !u!4 &8337848391119399339 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 2015205693124672763, guid: 5b9a73ac6adce494498954fd5d9d8a64, type: 3}
+  m_PrefabInstance: {fileID: 8337848391119399338}
+  m_PrefabAsset: {fileID: 0}
+--- !u!1 &8337848391119399340 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 153739560978284486, guid: 5b9a73ac6adce494498954fd5d9d8a64, type: 3}
   m_PrefabInstance: {fileID: 8337848391119399338}
   m_PrefabAsset: {fileID: 0}
