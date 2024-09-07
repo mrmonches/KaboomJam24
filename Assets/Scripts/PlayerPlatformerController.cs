@@ -30,6 +30,8 @@ public class PlayerPlatformerController : MonoBehaviour
     private bool isInteracting;
     private static bool isMixing;
 
+    private bool canUI;
+
     [SerializeField, Tooltip("The buffer between when the player loses contact with the ground and they are still able to jump")]
     private float CoyoteTimer;
     private float coyoteTimeCounter;
@@ -47,6 +49,8 @@ public class PlayerPlatformerController : MonoBehaviour
     [SerializeField] private LayerMask GroundMask;
 
     [SerializeField] private GameObject DrinkMenu;
+
+    [SerializeField] private PlayerInteractiveController InteractionController;
 
     private Rigidbody2D _rb2d;
 
@@ -130,6 +134,11 @@ public class PlayerPlatformerController : MonoBehaviour
         if (invinsibilityCounter <= 0)
         {
             isInteracting = true;
+
+            if (canUI)
+            {
+                InteractionController.ProgressCircle();
+            }
         }
     }
 
@@ -196,6 +205,16 @@ public class PlayerPlatformerController : MonoBehaviour
 
             isMidair = true;
         }
+    }
+
+    public void InteractiveUIStatus(bool status)
+    {
+        canUI = status;
+    }
+
+    public bool CheckUIStatus()
+    {
+        return canUI;
     }
 
     public void ManageDrinkMenuStatus(CustomerController customer)
