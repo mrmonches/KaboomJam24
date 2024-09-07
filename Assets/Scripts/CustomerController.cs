@@ -4,7 +4,7 @@ public class CustomerController : MonoBehaviour
 {
     private PlayerPlatformerController playerController;
 
-    [SerializeField] private bool isOrdering = false;
+    public bool isOrdering = false;
 
     [SerializeField] private DrinkData order;
 
@@ -37,7 +37,7 @@ public class CustomerController : MonoBehaviour
         {
             isOrdering = true;
             Debug.Log("gave " + order.GetDrinkContents());
-            playerController.ManageDrinkMenuStatus(order);
+            playerController.ManageDrinkMenuStatus(this);
         }
     }
 }

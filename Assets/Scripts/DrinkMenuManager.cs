@@ -1,9 +1,12 @@
 using System.Collections;
 using System.Collections.Generic;
+using System.Data;
 using System.Net.NetworkInformation;
+using System.Runtime.CompilerServices;
 using System.Threading;
 using TMPro;
 using Unity.VisualScripting;
+using UnityEditor;
 using UnityEditor.ShaderGraph.Drawing;
 using UnityEngine;
 using UnityEngine.UI;
@@ -42,11 +45,21 @@ public class DrinkMenuManager : MonoBehaviour
     [SerializeField] private GameObject orderSourText;
     [SerializeField] private GameObject orderSaltyText;
 
+    [SerializeField] private CustomerController currentCustomer;
+    private bool orderComplete = false;
+
+    [SerializeField] private List<Button> buttons;
+
     // Start is called before the first frame update
     private void Awake()
     {
         currentDrink.Clear();
+        foreach (GameObject go in DrinkLayers)
+        {
+            go.SetActive(false);
+        }
         UpdateText();
+        
     }
 
     public void AddIngredient (int IngredientEnumNumber)
@@ -117,10 +130,11 @@ public class DrinkMenuManager : MonoBehaviour
         {
             currentDrinkStats.z = 0;
         }
-
+        Debug.Log(currentDrinkStats);
         if (currentDrinkStats == currentOrder)
         {
             Debug.Log("order complete");
+            orderComplete = true;
             GameObject.FindGameObjectWithTag("Manager").GetComponent<GameManager>().DrinkCompleted(IngredientProfit);
         }
         else
@@ -128,24 +142,32 @@ public class DrinkMenuManager : MonoBehaviour
             Debug.Log("fuck you");
         }
 
-        CloseMenu();
+        StartCoroutine(CloseMenu());
     }
-    public void CloseMenu()
+    public IEnumerator CloseMenu()
     {
+        yield return new WaitForEndOfFrame();
+        currentCustomer.isOrdering = false;
         FindObjectOfType<PlayerPlatformerController>().ManageDrinkMenuStatus(null);
     }
-
-    public void NewOrder(DrinkData order)
+    public void TriggerMenuClose()
     {
-        currentOrder = order.GetDrinkContents();
+        StartCoroutine(CloseMenu());
+    }
+
+    public void NewOrder(CustomerController customer)
+    {
+        orderComplete = false;
+        currentCustomer = customer;
+        currentOrder = customer.getOrder().GetDrinkContents();
 
         orderSweetText.GetComponent<TMP_Text>().text = currentOrder.x.ToString();
         orderSourText.GetComponent<TMP_Text>().text = currentOrder.y.ToString();
         orderSaltyText.GetComponent<TMP_Text>().text = currentOrder.z.ToString();
 
-        if (order.GetDrinkSprite() != null) 
+        if (customer.getOrder().GetDrinkSprite() != null) 
         {
-            customerPortrait.GetComponent<Image>().sprite = order.GetDrinkSprite();
+            customerPortrait.GetComponent<Image>().sprite = customer.getOrder().GetDrinkSprite();
         }
         UpdateText();
     }
