@@ -15,6 +15,7 @@ GameObject:
   - component: {fileID: 4981419440077333463}
   - component: {fileID: 1846888877722417260}
   - component: {fileID: 3077455885297193545}
+  - component: {fileID: 3458712498104645617}
   m_Layer: 7
   m_Name: Player
   m_TagString: Player
@@ -208,8 +209,8 @@ MonoBehaviour:
   SprintMultiplier: 2
   MaxFallSpeed: 15
   GravityMultiplier: 1.05
+  defaultGravity: 1
   InvinsibilityTimer: 3
-  invinsibilityCounter: 0
   CoyoteTimer: 0.2
   BufferTimer: 0.2
   JumpTimer: 0.1
@@ -219,6 +220,7 @@ MonoBehaviour:
     serializedVersion: 2
     m_Bits: 64
   DrinkMenu: {fileID: 0}
+  InteractionController: {fileID: 3458712498104645617}
 --- !u!114 &3077455885297193545
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -234,3 +236,19 @@ MonoBehaviour:
   InventoryContents: 090000000900000009000000090000000900000009000000
   MaxItemAmount: 9
   HazardDecrement: 3
+--- !u!114 &3458712498104645617
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7817397098169624107}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 707ff2bc3eb30404d916452ace565606, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  PlayerObject: {fileID: 7817397098169624107}
+  barController: {fileID: 0}
+  Increment: 204
+  Circle: {fileID: 0}
