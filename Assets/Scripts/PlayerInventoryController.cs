@@ -1,12 +1,14 @@
 using System;
 using UnityEngine;
+using Random = UnityEngine.Random;
 
 public class PlayerInventoryController : MonoBehaviour
 {
     // Unity can't serialize or draw a 2D array, nothing will happen
-    private int[,] InventoryContents = { { 0, 0 }, { 1, 0 }, { 2, 0 }, { 3, 0 }, { 4, 0 }, { 5, 0 } };
+    [SerializeField] private int[] InventoryContents = {9, 9, 9, 9, 9, 9};
 
     [SerializeField] private int MaxItemAmount;
+    [SerializeField] private int HazardDecrement;
 
     /// <summary>
     /// Don't know exactly what the inventory update looks like
@@ -19,7 +21,7 @@ public class PlayerInventoryController : MonoBehaviour
         switch (type)
         {
             case DrinkMenuManager.IngredientTypes.Ectoplasm:
-                InventoryContents[0, 0] += amount;
+                //InventoryContents[0, 0] += amount;
                 break;
         }
     }
@@ -31,9 +33,14 @@ public class PlayerInventoryController : MonoBehaviour
     {
         for (int i = 0; i <= 5; i++)
         {
-            InventoryContents[i, 1] = MaxItemAmount;
-
-            print(InventoryContents[i, 0] + " " + InventoryContents[i, 1] + "\n");
+            InventoryContents[i] = MaxItemAmount;
         }
+    }
+
+    public void LoseItems()
+    {
+        int index = Random.Range(0, 6);
+
+        InventoryContents[index] -= HazardDecrement;
     }
 }
