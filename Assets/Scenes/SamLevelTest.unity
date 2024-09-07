@@ -247,6 +247,7 @@ MonoBehaviour:
   MaxFallSpeed: 10
   GravityMultiplier: 1
   defaultGravity: 2.5
+  InvinsibilityTimer: 0
   CoyoteTimer: 0.2
   BufferTimer: 0.2
   JumpTimer: 0.4
@@ -840,6 +841,10 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 1846888877722417260, guid: ff4ee980122deaf4591f2d282cf37ef8, type: 3}
+      propertyPath: JumpForce
+      value: 10
+      objectReference: {fileID: 0}
     - target: {fileID: 7817397098169624107, guid: ff4ee980122deaf4591f2d282cf37ef8, type: 3}
       propertyPath: m_Name
       value: Player (1)
