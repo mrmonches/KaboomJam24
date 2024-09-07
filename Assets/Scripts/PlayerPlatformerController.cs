@@ -16,7 +16,7 @@ public class PlayerPlatformerController : MonoBehaviour
     [SerializeField] private float MaxFallSpeed;
 
     [SerializeField] private float GravityMultiplier;
-    private float defaultGravity = 1f;
+    [SerializeField] private float defaultGravity;
 
     private float moveValue;
 
