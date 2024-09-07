@@ -3488,9 +3488,9 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   possibleIngredients:
   - type: 0
-    sweet: 2
-    sour: 0
-    spicy: -1
+    sweet: 0
+    sour: 4
+    spicy: -3
     spr: {fileID: 0}
     col: {r: 1, g: 0, b: 0, a: 1}
   - type: 1
@@ -3501,14 +3501,14 @@ MonoBehaviour:
     col: {r: 0, g: 1, b: 0.8175471, a: 1}
   - type: 2
     sweet: 0
-    sour: 4
-    spicy: -3
+    sour: -1
+    spicy: 2
     spr: {fileID: 0}
     col: {r: 0.3796829, g: 1, b: 0, a: 1}
   - type: 3
-    sweet: -3
+    sweet: 2
     sour: 0
-    spicy: 4
+    spicy: -1
     spr: {fileID: 0}
     col: {r: 0, g: 0, b: 0, a: 1}
   - type: 4
@@ -3518,9 +3518,9 @@ MonoBehaviour:
     spr: {fileID: 0}
     col: {r: 1, g: 0, b: 0.9312763, a: 1}
   - type: 5
-    sweet: 0
-    sour: -1
-    spicy: 2
+    sweet: -3
+    sour: 0
+    spicy: 4
     spr: {fileID: 0}
     col: {r: 0, g: 0.49560642, b: 1, a: 1}
   IngredientProfit: 10

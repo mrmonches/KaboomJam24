@@ -15,12 +15,13 @@ public class DrinkMenuManager : MonoBehaviour
 {
     [HideInInspector, System.Serializable] public enum IngredientTypes
     {
+        Draculum,
+        Orange20,
+        Vodka,
         Ectoplasm,
-        SpoiledCheese,
-        EyeOfNewt,
-        OrangeZest,
-        CatPiss,
-        Vodka
+        SpiritJam,
+        Ashes
+
     }
     
     [SerializeField, Header("Enter all the possible ingredients here"), 
@@ -58,10 +59,10 @@ public class DrinkMenuManager : MonoBehaviour
     private void Awake()
     {
         currentDrink.Clear();
-        for (int i = 0; i < 6; i++)
+        /*for (int i = 0; i < 6; i++)
         {
             inventory[i] = FindObjectOfType<PlayerInventoryController>().InventoryContents[i];
-        }
+        }*/
         foreach (GameObject go in DrinkLayers)
         {
             go.SetActive(false);
