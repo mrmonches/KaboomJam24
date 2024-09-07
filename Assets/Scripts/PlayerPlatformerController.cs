@@ -7,13 +7,17 @@ public class PlayerPlatformerController : MonoBehaviour
 
     private InputAction moveAction;
     private InputAction jumpAction;
+    private InputAction sprintAction;
 
     [SerializeField] private float MoveSpeed;
     [SerializeField] private float JumpForce;
+    [SerializeField] private float SprintMultiplier;
 
     private float moveValue;
 
     private bool isJumping;
+
+    private bool isSprinting;
 
     [SerializeField, Tooltip("The buffer between when the player loses contact with the ground and they are still able to jump")]
     private float CoyoteTimer;
@@ -41,12 +45,16 @@ public class PlayerPlatformerController : MonoBehaviour
 
         moveAction = _playerInput.currentActionMap.FindAction("Move");
         jumpAction = _playerInput.currentActionMap.FindAction("Jump");
+        sprintAction = _playerInput.currentActionMap.FindAction("Sprint");
 
         moveAction.started += MoveAction_started;
         moveAction.canceled += MoveAction_canceled;
 
         jumpAction.started += JumpAction_started;
         jumpAction.canceled += JumpAction_canceled;
+
+        sprintAction.started += SprintAction_started;
+        sprintAction.canceled += SprintAction_canceled;
 
         _rb2d = GetComponent<Rigidbody2D>();
 
@@ -85,6 +93,15 @@ public class PlayerPlatformerController : MonoBehaviour
 
             coyoteTimeCounter = 0;
         }
+    }
+
+    private void SprintAction_started(InputAction.CallbackContext obj)
+    {
+        isSprinting = true;
+    }
+    private void SprintAction_canceled(InputAction.CallbackContext obj)
+    {
+        isSprinting = false;
     }
 
     private void PlayerJump()
@@ -127,7 +144,15 @@ public class PlayerPlatformerController : MonoBehaviour
 
     private void FixedUpdate()
     {
-        _rb2d.velocity = new Vector2(moveValue, _rb2d.velocity.y);
+        if (isSprinting)
+        {
+            _rb2d.velocity = new Vector2(moveValue * SprintMultiplier, _rb2d.velocity.y);
+        }
+        else
+        {
+            _rb2d.velocity = new Vector2(moveValue, _rb2d.velocity.y);
+        }
+        
 
         if (isJumping)
         {
