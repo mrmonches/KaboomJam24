@@ -21,8 +21,10 @@ public class CustomerController : MonoBehaviour
         isGone = true;
         GetComponent<SpriteRenderer>().color = new Color (0, 0, 0, 0.5f);
         yield return new WaitForSecondsRealtime(TimeUntilBack);
-        GetComponent<SpriteRenderer>().color = new Color(255, 255, 255, 1);
+        FindObjectOfType<GameManager>().AssignDrinks(this);
         isGone = false;
+        GetComponent<SpriteRenderer>().color = new Color(255, 255, 255, 1);
+
     }
 
     public void CustomerComplete()
