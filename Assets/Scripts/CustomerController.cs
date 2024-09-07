@@ -33,7 +33,7 @@ public class CustomerController : MonoBehaviour
     {
         if (playerController != null && playerController.GetInteractionStatus())
         {
-            playerController.ManageDrinkMenuStatus();
+            playerController.ManageDrinkMenuStatus(order);
         }
     }
 }
