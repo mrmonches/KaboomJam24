@@ -8,6 +8,7 @@ public class PlayerPlatformerController : MonoBehaviour
     private InputAction moveAction;
     private InputAction jumpAction;
     private InputAction sprintAction;
+    private InputAction interactAction;
 
     [SerializeField] private float MoveSpeed;
     [SerializeField] private float JumpForce;
@@ -23,6 +24,7 @@ public class PlayerPlatformerController : MonoBehaviour
     private bool isJumping;
     private bool isSprinting;
     private bool isMidair;
+    private bool isInteracting;
 
     [SerializeField, Tooltip("The buffer between when the player loses contact with the ground and they are still able to jump")]
     private float CoyoteTimer;
@@ -51,6 +53,7 @@ public class PlayerPlatformerController : MonoBehaviour
         moveAction = _playerInput.currentActionMap.FindAction("Move");
         jumpAction = _playerInput.currentActionMap.FindAction("Jump");
         sprintAction = _playerInput.currentActionMap.FindAction("Sprint");
+        interactAction = _playerInput.currentActionMap.FindAction("Interact");
 
         moveAction.started += MoveAction_started;
         moveAction.canceled += MoveAction_canceled;
@@ -60,6 +63,9 @@ public class PlayerPlatformerController : MonoBehaviour
 
         sprintAction.started += SprintAction_started;
         sprintAction.canceled += SprintAction_canceled;
+
+        interactAction.started += InteractAction_started;
+        interactAction.canceled += InteractAction_canceled;
 
         _rb2d = GetComponent<Rigidbody2D>();
 
@@ -107,7 +113,19 @@ public class PlayerPlatformerController : MonoBehaviour
     private void SprintAction_canceled(InputAction.CallbackContext obj)
     {
         isSprinting = false;
+    }   
+    
+    private void InteractAction_started(InputAction.CallbackContext obj)
+    {
+        isInteracting = true;
     }
+
+    private void InteractAction_canceled(InputAction.CallbackContext obj)
+    {
+        isInteracting = false;
+    }
+
+    
 
     private void PlayerJump()
     {
@@ -123,6 +141,11 @@ public class PlayerPlatformerController : MonoBehaviour
 
             isJumping = false;
         }
+    }
+
+    public bool GetInteractionStatus()
+    {
+        return isInteracting;
     }
 
     private void GroundCheck()
@@ -193,5 +216,11 @@ public class PlayerPlatformerController : MonoBehaviour
 
         jumpAction.started -= JumpAction_started;
         jumpAction.canceled -= JumpAction_canceled;
+
+        sprintAction.started -= SprintAction_started;
+        sprintAction.canceled -= SprintAction_canceled;
+
+        interactAction.started -= InteractAction_started;
+        interactAction.canceled -= InteractAction_canceled;
     }
 }
