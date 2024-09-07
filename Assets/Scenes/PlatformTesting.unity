@@ -353,7 +353,7 @@ GameObject:
   - component: {fileID: 1589858790}
   - component: {fileID: 1589858789}
   - component: {fileID: 1589858788}
-  m_Layer: 0
+  m_Layer: 6
   m_Name: Square
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -576,6 +576,11 @@ MonoBehaviour:
   JumpForce: 8
   JumpTimer: 0.2
   currentJumpTime: 0
+  BoxCastSize: {x: 0.9, y: 0.2}
+  GroundDistance: 0.44
+  GroundMask:
+    serializedVersion: 2
+    m_Bits: 64
 --- !u!61 &1897850158
 BoxCollider2D:
   m_ObjectHideFlags: 0

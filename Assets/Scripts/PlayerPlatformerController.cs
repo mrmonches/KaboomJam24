@@ -1,5 +1,6 @@
 using System.Collections;
 using System.Collections.Generic;
+using Unity.VisualScripting;
 using UnityEngine;
 using UnityEngine.InputSystem;
 
@@ -20,6 +21,10 @@ public class PlayerPlatformerController : MonoBehaviour
 
     [SerializeField] private float JumpTimer;
     [SerializeField] private float currentJumpTime;
+
+    [SerializeField] private Vector2 BoxCastSize;
+    [SerializeField] private float GroundDistance;
+    [SerializeField] private LayerMask GroundMask;
 
     private bool canJump;
 
@@ -89,6 +94,20 @@ public class PlayerPlatformerController : MonoBehaviour
         }
     }
 
+    private void GroundCheck()
+    {
+        RaycastHit2D BoxCasthit = BoxCastDrawer.BoxCastAndDraw(transform.position, BoxCastSize, 0, Vector2.down, GroundDistance, GroundMask);
+
+        if (BoxCasthit.transform != null)
+        {
+            canJump = true;
+        }
+        else
+        {
+            canJump = false;
+        }
+    }
+
     private void FixedUpdate()
     {
         _rb2d.velocity = new Vector2(moveValue, _rb2d.velocity.y);
@@ -97,6 +116,8 @@ public class PlayerPlatformerController : MonoBehaviour
         {
             PlayerJump();
         }
+
+        GroundCheck();
     }
 
     private void OnDestroy()
