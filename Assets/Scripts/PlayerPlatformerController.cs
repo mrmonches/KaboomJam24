@@ -16,7 +16,10 @@ public class PlayerPlatformerController : MonoBehaviour
     [SerializeField] private float MaxFallSpeed;
 
     [SerializeField] private float GravityMultiplier;
-    [SerializeField] private float defaultGravity;
+    private float defaultGravity = 1f;
+
+    [SerializeField] private float InvinsibilityTimer;
+    private float invinsibilityCounter;
 
     private float moveValue;
 
@@ -47,6 +50,8 @@ public class PlayerPlatformerController : MonoBehaviour
 
     private Rigidbody2D _rb2d;
 
+    private PlayerInventoryController playerInventory;
+
     private void Awake()
     {
         _playerInput = GetComponent<PlayerInput>();
@@ -71,6 +76,8 @@ public class PlayerPlatformerController : MonoBehaviour
         interactAction.canceled += InteractAction_canceled;
 
         _rb2d = GetComponent<Rigidbody2D>();
+
+        playerInventory = GetComponent<PlayerInventoryController>();
 
         currentJumpTime = JumpTimer;
     }
@@ -120,12 +127,18 @@ public class PlayerPlatformerController : MonoBehaviour
     
     private void InteractAction_started(InputAction.CallbackContext obj)
     {
-        isInteracting = true;
+        if (invinsibilityCounter <= 0)
+        {
+            isInteracting = true;
+        }
     }
 
     private void InteractAction_canceled(InputAction.CallbackContext obj)
     {
-        isInteracting = false;
+        if (invinsibilityCounter <= 0)
+        {
+            isInteracting = false;
+        }
     }
 
     private void PlayerJump()
@@ -141,6 +154,16 @@ public class PlayerPlatformerController : MonoBehaviour
             currentJumpTime = JumpTimer;
 
             isJumping = false;
+        }
+    }
+
+    public void ActivateIFrames()
+    {
+        if (invinsibilityCounter <= 0)
+        {
+            invinsibilityCounter = InvinsibilityTimer;
+
+            playerInventory.LoseItems();
         }
     }
 
@@ -196,7 +219,7 @@ public class PlayerPlatformerController : MonoBehaviour
         {
             if (isSprinting)
             {
-                _rb2d.velocity = new Vector2(moveValue * SprintMultiplier, Mathf.Max(_rb2d.velocity.y, MaxFallSpeed));
+                _rb2d.velocity = new Vector2(moveValue * SprintMultiplier, Mathf.Max(_rb2d.velocity.y, -MaxFallSpeed));
             }
             else
             {
@@ -222,6 +245,11 @@ public class PlayerPlatformerController : MonoBehaviour
             if (bufferTimeCounter > 0)
             {
                 bufferTimeCounter -= Time.deltaTime;
+            }
+
+            if (invinsibilityCounter > 0)
+            {
+                invinsibilityCounter -= Time.deltaTime;
             }
         }
     }

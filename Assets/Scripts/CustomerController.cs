@@ -4,6 +4,18 @@ public class CustomerController : MonoBehaviour
 {
     private PlayerPlatformerController playerController;
 
+    private DrinkData order;
+
+    public void setOrder(DrinkData order)
+    {
+        this.order = order;
+    }
+
+    public DrinkData getOrder()
+    {
+        return order;
+    }
+
     private void OnTriggerEnter2D(Collider2D collision)
     {
         if (collision.gameObject.CompareTag("Player"))

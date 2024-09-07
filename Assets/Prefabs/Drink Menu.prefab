@@ -383,7 +383,7 @@ Transform:
   - {fileID: 2170151933014354391}
   - {fileID: 3309175680885640423}
   m_Father: {fileID: 0}
-  m_RootOrder: -1
+  m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &220341415399679630
 GameObject:
@@ -5310,6 +5310,7 @@ MonoBehaviour:
     spicy: 1
     spr: {fileID: 0}
     col: {r: 0, g: 0.49560642, b: 1, a: 1}
+  IngredientProfit: 10
   currentDrink: []
   currentOrder: {x: 2, y: 2, z: 0}
   currentDrinkStats: {x: 0, y: 0, z: 0}
