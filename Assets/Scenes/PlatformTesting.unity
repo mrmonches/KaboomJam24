@@ -574,7 +574,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   MoveSpeed: 4
   JumpForce: 8
-  JumpTimer: 2
+  JumpTimer: 0.2
   currentJumpTime: 0
 --- !u!61 &1897850158
 BoxCollider2D:
@@ -637,7 +637,7 @@ Rigidbody2D:
   m_LinearDrag: 0
   m_AngularDrag: 0.05
   m_GravityScale: 1
-  m_Material: {fileID: 0}
+  m_Material: {fileID: 6200000, guid: aa126cddbc60eb64ba19037996745778, type: 2}
   m_IncludeLayers:
     serializedVersion: 2
     m_Bits: 0
