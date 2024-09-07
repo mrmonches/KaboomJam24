@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Net.NetworkInformation;
 using System.Threading;
 using TMPro;
+using Unity.VisualScripting;
 using UnityEditor.ShaderGraph.Drawing;
 using UnityEngine;
 using UnityEngine.UI;
@@ -22,6 +23,7 @@ public class DrinkMenuManager : MonoBehaviour
     [SerializeField, Header("Enter all the possible ingredients here"), 
         Tooltip("Enum is ingredient name, then add the ingredient's stats into the three digits")] 
     private List<Ingredient> possibleIngredients = new List<Ingredient>();
+    [SerializeField, Header("Enter how much money each ingredient is worth here")] private int IngredientProfit;
 
     
     [SerializeField, Header("Debugging and refrences")] private List<Ingredient> currentDrink = new List<Ingredient>();
@@ -34,7 +36,12 @@ public class DrinkMenuManager : MonoBehaviour
     [SerializeField] private GameObject sourText;
     [SerializeField] private GameObject saltyText;
     [SerializeField] private List<GameObject> DrinkLayers;
-    
+
+    [SerializeField] private Sprite customerPortrait;
+    [SerializeField] private GameObject orderSweetText;
+    [SerializeField] private GameObject orderSourText;
+    [SerializeField] private GameObject orderSaltyText;
+
     // Start is called before the first frame update
     private void Awake()
     {
@@ -114,15 +121,30 @@ public class DrinkMenuManager : MonoBehaviour
         if (currentDrinkStats == currentOrder)
         {
             Debug.Log("order complete");
+            GameObject.FindGameObjectWithTag("Manager").GetComponent<GameManager>().DrinkCompleted(IngredientProfit);
         }
         else
         {
             Debug.Log("fuck you");
         }
 
+        CloseMenu();
     }
     public void CloseMenu()
     {
+        
+    }
 
+    public void NewOrder(Vector3 order, Sprite spr)
+    {
+        currentOrder = order;
+
+        orderSweetText.GetComponent<TMP_Text>().text = currentOrder.x.ToString();
+        orderSourText.GetComponent<TMP_Text>().text = currentOrder.y.ToString();
+        orderSaltyText.GetComponent<TMP_Text>().text = currentOrder.z.ToString();
+
+        customerPortrait.GetComponent<Image>().sprite = spr;
+
+        UpdateText();
     }
 }
