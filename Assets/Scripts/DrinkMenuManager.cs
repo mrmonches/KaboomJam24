@@ -23,6 +23,7 @@ public class DrinkMenuManager : MonoBehaviour
     [SerializeField, Header("Enter all the possible ingredients here"), 
         Tooltip("Enum is ingredient name, then add the ingredient's stats into the three digits")] 
     private List<Ingredient> possibleIngredients = new List<Ingredient>();
+    [SerializeField, Header("Enter how much money each ingredient is worth here")] private int IngredientProfit;
 
     
     [SerializeField, Header("Debugging and refrences")] private List<Ingredient> currentDrink = new List<Ingredient>();
@@ -120,6 +121,7 @@ public class DrinkMenuManager : MonoBehaviour
         if (currentDrinkStats == currentOrder)
         {
             Debug.Log("order complete");
+            GameObject.FindGameObjectWithTag("Manager").GetComponent<GameManager>().DrinkCompleted(IngredientProfit);
         }
         else
         {
