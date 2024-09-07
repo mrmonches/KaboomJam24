@@ -198,12 +198,12 @@ public class PlayerPlatformerController : MonoBehaviour
         }
     }
 
-    public void ManageDrinkMenuStatus(DrinkData order)
+    public void ManageDrinkMenuStatus(CustomerController customer)
     {
-        if (!isMixing && order != null)
+        if (!isMixing && customer != null)
         {
             DrinkMenu.SetActive(true);
-            DrinkMenu.GetComponentInChildren<DrinkMenuManager>().NewOrder(order);
+            DrinkMenu.GetComponentInChildren<DrinkMenuManager>().NewOrder(customer);
             isMixing = true;
         }
         else
