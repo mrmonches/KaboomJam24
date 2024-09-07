@@ -137,7 +137,7 @@ public class PlayerPlatformerController : MonoBehaviour
 
             if (canUI)
             {
-                InteractionController.ProgressCircle();
+            //    InteractionController.ProgressCircle();
             }
         }
     }
