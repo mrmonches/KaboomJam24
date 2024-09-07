@@ -43,6 +43,8 @@ public class PlayerPlatformerController : MonoBehaviour
     [SerializeField] private float GroundDistance;
     [SerializeField] private LayerMask GroundMask;
 
+    [SerializeField] private GameObject DrinkMenu;
+
     private Rigidbody2D _rb2d;
 
     private void Awake()
