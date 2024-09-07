@@ -54,9 +54,9 @@ public class DrinkMenuManager : MonoBehaviour
 
     [SerializeField] private List<Button> buttons;
 
-
+    
     // Start is called before the first frame update
-    private void Awake()
+    private void OnEnable()
     {
         currentDrink.Clear();
         /*for (int i = 0; i < 6; i++)
@@ -145,6 +145,7 @@ public class DrinkMenuManager : MonoBehaviour
             Debug.Log("order complete");
             orderComplete = true;
             GameObject.FindGameObjectWithTag("Manager").GetComponent<GameManager>().DrinkCompleted(IngredientProfit);
+            currentCustomer.CustomerComplete();
         }
         else
         {

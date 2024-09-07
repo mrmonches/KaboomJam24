@@ -56,6 +56,11 @@ public class PlayerPlatformerController : MonoBehaviour
 
     private PlayerInventoryController playerInventory;
 
+    private AudioSource _audioSource;
+    [SerializeField] private AudioClip JumpClip;
+
+    private SpriteRenderer _spriteRenderer;
+
     private void Awake()
     {
         _playerInput = GetComponent<PlayerInput>();
@@ -84,11 +89,24 @@ public class PlayerPlatformerController : MonoBehaviour
         playerInventory = GetComponent<PlayerInventoryController>();
 
         currentJumpTime = JumpTimer;
+
+        _audioSource = GetComponent<AudioSource>();
+
+        _spriteRenderer = GetComponent<SpriteRenderer>();
     }
 
     private void MoveAction_started(InputAction.CallbackContext obj)
     {
         moveValue = moveAction.ReadValue<float>() * MoveSpeed;
+
+        if (moveAction.ReadValue<float>() > 0 && !_spriteRenderer.flipX)
+        {
+            _spriteRenderer.flipX = true;
+        }
+        else if (moveAction.ReadValue<float>() < 0 && _spriteRenderer.flipX) 
+        {
+            _spriteRenderer.flipX = false;
+        }
     }
 
     private void MoveAction_canceled(InputAction.CallbackContext obj)
@@ -105,6 +123,8 @@ public class PlayerPlatformerController : MonoBehaviour
             isJumping = true;
 
             coyoteTimeCounter = 0;
+
+            //_audioSource.PlayOneShot(JumpClip);
         }
     }
 
@@ -191,6 +211,8 @@ public class PlayerPlatformerController : MonoBehaviour
 
             if (bufferTimeCounter > 0)
             {
+                //_audioSource.PlayOneShot(JumpClip);
+
                 PlayerJump();
             }
 
