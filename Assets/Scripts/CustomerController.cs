@@ -4,7 +4,7 @@ public class CustomerController : MonoBehaviour
 {
     private PlayerPlatformerController playerController;
 
-    private DrinkData order;
+    [SerializeField] private DrinkData order;
 
     public void setOrder(DrinkData order)
     {
