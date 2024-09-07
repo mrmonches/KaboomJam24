@@ -25,7 +25,7 @@ public class PlayerPlatformerController : MonoBehaviour
     private bool isSprinting;
     private bool isMidair;
     private bool isInteracting;
-    private bool isMixing;
+    private static bool isMixing;
 
     [SerializeField, Tooltip("The buffer between when the player loses contact with the ground and they are still able to jump")]
     private float CoyoteTimer;
@@ -175,7 +175,17 @@ public class PlayerPlatformerController : MonoBehaviour
         }
     }
 
-    public void SetMixingStatus(bool status)
+    public void ManageDrinkMenuStatus()
+    {
+        if (!isMixing)
+        {
+            DrinkMenu.SetActive(true);
+
+            isMixing = true;
+        }
+    }
+
+    public static void SetMixingStatus(bool status)
     {
         isMixing = status;
     }
