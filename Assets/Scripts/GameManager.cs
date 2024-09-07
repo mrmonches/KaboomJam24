@@ -25,7 +25,7 @@ public class GameManager : MonoBehaviour
             {
                 availableDrinks = drinks;
             }
-            int rand = Random.Range(0, drinks.Count - 1);
+            int rand = Random.Range(0, drinks.Count);
             customer.setOrder(drinks[rand]);
             drinks.RemoveAt(rand);
         }
