@@ -12,12 +12,17 @@ public class PlayerPlatformerController : MonoBehaviour
     [SerializeField] private float MoveSpeed;
     [SerializeField] private float JumpForce;
     [SerializeField] private float SprintMultiplier;
+    [SerializeField] private float MaxFallSpeed;
+
+    [SerializeField] private float GravityMultiplier;
+    private float defaultGravity = 1f;
 
     private float moveValue;
 
+    // Variables that are redundant but help clarity in conditional statements
     private bool isJumping;
-
     private bool isSprinting;
+    private bool isMidair;
 
     [SerializeField, Tooltip("The buffer between when the player loses contact with the ground and they are still able to jump")]
     private float CoyoteTimer;
@@ -132,6 +137,8 @@ public class PlayerPlatformerController : MonoBehaviour
             {
                 PlayerJump();
             }
+
+            isMidair = false;
         }
         else
         {
@@ -139,6 +146,8 @@ public class PlayerPlatformerController : MonoBehaviour
             {
                 coyoteTimeCounter -= Time.deltaTime;
             }
+
+            isMidair = true;
         }
     }
 
@@ -146,13 +155,23 @@ public class PlayerPlatformerController : MonoBehaviour
     {
         if (isSprinting)
         {
+            //_rb2d.velocity = new Vector2(moveValue * SprintMultiplier, Mathf.Max(_rb2d.velocity.y, MaxFallSpeed));
             _rb2d.velocity = new Vector2(moveValue * SprintMultiplier, _rb2d.velocity.y);
         }
         else
         {
-            _rb2d.velocity = new Vector2(moveValue, _rb2d.velocity.y);
+            //_rb2d.velocity = new Vector2(moveValue, _rb2d.velocity.y);
+            _rb2d.velocity = new Vector2(moveValue, Mathf.Max(_rb2d.velocity.y, -MaxFallSpeed));
         }
         
+        if (isMidair && _rb2d.velocity.y < 0) 
+        {
+            _rb2d.gravityScale *= GravityMultiplier;
+        }
+        else
+        {
+            _rb2d.gravityScale = defaultGravity;
+        }
 
         if (isJumping)
         {

@@ -706,6 +706,8 @@ MonoBehaviour:
   MoveSpeed: 4
   JumpForce: 8
   SprintMultiplier: 2
+  MaxFallSpeed: 15
+  GravityMultiplier: 1.05
   CoyoteTimer: 0.2
   BufferTimer: 0.2
   JumpTimer: 0.1
