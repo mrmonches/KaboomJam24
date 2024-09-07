@@ -196,12 +196,10 @@ public class PlayerPlatformerController : MonoBehaviour
         {
             if (isSprinting)
             {
-                //_rb2d.velocity = new Vector2(moveValue * SprintMultiplier, Mathf.Max(_rb2d.velocity.y, MaxFallSpeed));
-                _rb2d.velocity = new Vector2(moveValue * SprintMultiplier, _rb2d.velocity.y);
+                _rb2d.velocity = new Vector2(moveValue * SprintMultiplier, Mathf.Max(_rb2d.velocity.y, MaxFallSpeed));
             }
             else
             {
-                //_rb2d.velocity = new Vector2(moveValue, _rb2d.velocity.y);
                 _rb2d.velocity = new Vector2(moveValue, Mathf.Max(_rb2d.velocity.y, -MaxFallSpeed));
             }
 
