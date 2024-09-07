@@ -1,5 +1,3 @@
-using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
 
 public class HazardController : MonoBehaviour
@@ -11,7 +9,7 @@ public class HazardController : MonoBehaviour
 
         if (incomingCollision.CompareTag("Player"))
         {
-
+            incomingCollision.GetComponent<PlayerPlatformerController>().ActivateIFrames();
         }
     }
 }

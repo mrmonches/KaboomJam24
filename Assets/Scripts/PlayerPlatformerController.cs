@@ -18,7 +18,7 @@ public class PlayerPlatformerController : MonoBehaviour
     [SerializeField] private float GravityMultiplier;
     private float defaultGravity = 1f;
 
-    [SerializeField] private float invinsibilityTimer;
+    [SerializeField] private float InvinsibilityTimer;
     private float invinsibilityCounter;
 
     private float moveValue;
@@ -50,6 +50,8 @@ public class PlayerPlatformerController : MonoBehaviour
 
     private Rigidbody2D _rb2d;
 
+    private PlayerInventoryController playerInventory;
+
     private void Awake()
     {
         _playerInput = GetComponent<PlayerInput>();
@@ -74,6 +76,8 @@ public class PlayerPlatformerController : MonoBehaviour
         interactAction.canceled += InteractAction_canceled;
 
         _rb2d = GetComponent<Rigidbody2D>();
+
+        playerInventory = GetComponent<PlayerInventoryController>();
 
         currentJumpTime = JumpTimer;
     }
@@ -123,12 +127,18 @@ public class PlayerPlatformerController : MonoBehaviour
     
     private void InteractAction_started(InputAction.CallbackContext obj)
     {
-        isInteracting = true;
+        if (invinsibilityCounter <= 0)
+        {
+            isInteracting = true;
+        }
     }
 
     private void InteractAction_canceled(InputAction.CallbackContext obj)
     {
-        isInteracting = false;
+        if (invinsibilityCounter <= 0)
+        {
+            isInteracting = false;
+        }
     }
 
     private void PlayerJump()
@@ -149,7 +159,12 @@ public class PlayerPlatformerController : MonoBehaviour
 
     public void ActivateIFrames()
     {
+        if (invinsibilityCounter <= 0)
+        {
+            invinsibilityCounter = InvinsibilityTimer;
 
+            playerInventory.LoseItems();
+        }
     }
 
     public bool GetInteractionStatus()
@@ -230,6 +245,11 @@ public class PlayerPlatformerController : MonoBehaviour
             if (bufferTimeCounter > 0)
             {
                 bufferTimeCounter -= Time.deltaTime;
+            }
+
+            if (invinsibilityCounter > 0)
+            {
+                invinsibilityCounter -= Time.deltaTime;
             }
         }
     }

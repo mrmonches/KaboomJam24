@@ -208,6 +208,8 @@ MonoBehaviour:
   SprintMultiplier: 2
   MaxFallSpeed: 15
   GravityMultiplier: 1.05
+  InvinsibilityTimer: 3
+  invinsibilityCounter: 0
   CoyoteTimer: 0.2
   BufferTimer: 0.2
   JumpTimer: 0.1
@@ -216,6 +218,7 @@ MonoBehaviour:
   GroundMask:
     serializedVersion: 2
     m_Bits: 64
+  DrinkMenu: {fileID: 0}
 --- !u!114 &3077455885297193545
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -228,4 +231,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: eb0e9c55e14820c4d9742ba75e16cb8e, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  InventoryContents: 090000000900000009000000090000000900000009000000
   MaxItemAmount: 9
+  HazardDecrement: 3
