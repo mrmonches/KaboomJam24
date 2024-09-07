@@ -12,6 +12,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 39e7a5b59095d1e4b8c7cfc26ca46d77, type: 3}
   m_Name: Grandmas Ashes
   m_EditorClassIdentifier: 
-  DrinkContents: {x: 0, y: 0, z: 0}
+  DrinkContents: {x: 0, y: 0, z: 20}
   DrinkSprite: {fileID: 0}
-  DrinkName: 
+  DrinkName: Grandma's Ashes

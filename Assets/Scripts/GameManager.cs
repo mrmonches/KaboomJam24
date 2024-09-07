@@ -14,7 +14,7 @@ public class GameManager : MonoBehaviour
 
     private void Start()
     {
-        
+        AssignDrinks();
     }
 
     private void AssignDrinks()
