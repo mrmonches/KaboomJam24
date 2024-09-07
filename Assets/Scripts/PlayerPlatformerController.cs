@@ -1,6 +1,3 @@
-using System.Collections;
-using System.Collections.Generic;
-using Unity.VisualScripting;
 using UnityEngine;
 using UnityEngine.InputSystem;
 
@@ -18,13 +15,16 @@ public class PlayerPlatformerController : MonoBehaviour
 
     private bool isJumping;
 
-    [SerializeField] private float CoyoteTimer;
+    [SerializeField, Tooltip("The buffer between when the player loses contact with the ground and they are still able to jump")]
+    private float CoyoteTimer;
     private float coyoteTimeCounter;
 
-    [SerializeField] private float BufferTimer;
-    [SerializeField] private float bufferTimeCounter;
+    [SerializeField, Tooltip("The buffer between when the player hits jump before hitting the ground")]
+    private float BufferTimer;
+    private float bufferTimeCounter;
 
-    [SerializeField] private float JumpTimer;
+    [SerializeField, Tooltip("The amount of time the player is allowed to hold jump and receive force")] 
+    private float JumpTimer;
     private float currentJumpTime;
 
     [SerializeField] private Vector2 BoxCastSize;
@@ -110,6 +110,11 @@ public class PlayerPlatformerController : MonoBehaviour
         if (BoxCasthit.transform != null)
         {
             coyoteTimeCounter = CoyoteTimer;
+
+            if (bufferTimeCounter > 0)
+            {
+                PlayerJump();
+            }
         }
         else
         {
@@ -124,7 +129,7 @@ public class PlayerPlatformerController : MonoBehaviour
     {
         _rb2d.velocity = new Vector2(moveValue, _rb2d.velocity.y);
 
-        if (isJumping || bufferTimeCounter > 0)
+        if (isJumping)
         {
             PlayerJump();
         }
