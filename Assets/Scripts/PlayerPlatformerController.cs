@@ -17,16 +17,19 @@ public class PlayerPlatformerController : MonoBehaviour
     private float moveValue;
 
     private bool isJumping;
-    private float jumpValue;
+
+    [SerializeField] private float CoyoteTimer;
+    private float coyoteTimeCounter;
+
+    [SerializeField] private float BufferTimer;
+    private float bufferTimeCounter;
 
     [SerializeField] private float JumpTimer;
-    [SerializeField] private float currentJumpTime;
+    private float currentJumpTime;
 
     [SerializeField] private Vector2 BoxCastSize;
     [SerializeField] private float GroundDistance;
     [SerializeField] private LayerMask GroundMask;
-
-    private bool canJump;
 
     private Rigidbody2D _rb2d;
 
@@ -47,7 +50,7 @@ public class PlayerPlatformerController : MonoBehaviour
 
         _rb2d = GetComponent<Rigidbody2D>();
 
-        canJump = true;
+        currentJumpTime = JumpTimer;
     }
 
     private void MoveAction_started(InputAction.CallbackContext obj)
@@ -62,9 +65,11 @@ public class PlayerPlatformerController : MonoBehaviour
 
     private void JumpAction_started(InputAction.CallbackContext obj)
     {
-        if (canJump && !isJumping)
+        if (coyoteTimeCounter > 0 && !isJumping)
         {
             isJumping = true;
+
+            coyoteTimeCounter = 0;
         }
     }
 
@@ -75,12 +80,14 @@ public class PlayerPlatformerController : MonoBehaviour
             isJumping = false;
 
             currentJumpTime = JumpTimer;
+
+            coyoteTimeCounter = 0;
         }
     }
 
     private void PlayerJump()
     {
-        if (currentJumpTime > 0)
+        if (currentJumpTime >= 0)
         {
             currentJumpTime -= Time.deltaTime;
 
@@ -100,11 +107,14 @@ public class PlayerPlatformerController : MonoBehaviour
 
         if (BoxCasthit.transform != null)
         {
-            canJump = true;
+            coyoteTimeCounter = CoyoteTimer;
         }
         else
         {
-            canJump = false;
+            if (coyoteTimeCounter > 0)
+            {
+                coyoteTimeCounter -= Time.deltaTime;
+            }
         }
     }
 
