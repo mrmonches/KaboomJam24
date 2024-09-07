@@ -33,6 +33,7 @@ public class DrinkMenuManager : MonoBehaviour
     [SerializeField] private GameObject sweetText;
     [SerializeField] private GameObject sourText;
     [SerializeField] private GameObject saltyText;
+    [SerializeField] private List<GameObject> DrinkLayers;
     
     // Start is called before the first frame update
     private void Awake()
@@ -55,19 +56,45 @@ public class DrinkMenuManager : MonoBehaviour
                 count++;
             }
             currentDrink.Insert(count, possibleIngredients[IngredientEnumNumber]);
-            
-            currentDrinkStats += new Vector3(possibleIngredients[IngredientEnumNumber].getSweet(),
-                possibleIngredients[IngredientEnumNumber].getSour(), 
-                possibleIngredients[IngredientEnumNumber].getSpicy());
-            
+            /*currentDrinkStats += new Vector3(possibleIngredients[IngredientEnumNumber].getSweet(),
+                possibleIngredients[IngredientEnumNumber].getSour(),
+                possibleIngredients[IngredientEnumNumber].getSpicy());*/
+
+
             UpdateText();
         }
     }
+    public void RemoveIngredient(int positionToRemove)
+    {
+        currentDrink.RemoveAt(positionToRemove);
+        UpdateText();
+    }
     private void UpdateText()
     {
+        currentDrinkStats = Vector3.zero;
+        foreach (Ingredient ing in currentDrink)
+        {
+            currentDrinkStats += new Vector3(ing.getSweet(), ing.getSour(), ing.getSpicy());
+        }
+
         sweetText.GetComponent<TMP_Text>().text = currentDrinkStats.x.ToString();
         sourText.GetComponent<TMP_Text>().text = currentDrinkStats.y.ToString();
         saltyText.GetComponent<TMP_Text>().text = currentDrinkStats.z.ToString();
+
+        int count = 0;
+        foreach (GameObject go in DrinkLayers)
+        {
+            if (count < currentDrink.Count)
+            {
+                go.SetActive(true);
+                go.GetComponent<Image>().color = currentDrink[count].getCol();
+            }
+            else
+            {
+                go.SetActive(false);
+            }
+            count++;
+        }
     }
     public void CompleteDrink()
     {
