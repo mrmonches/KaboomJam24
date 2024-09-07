@@ -16,7 +16,10 @@ public class PlayerPlatformerController : MonoBehaviour
     [SerializeField] private float MaxFallSpeed;
 
     [SerializeField] private float GravityMultiplier;
-    [SerializeField] private float defaultGravity;
+    private float defaultGravity = 1f;
+
+    [SerializeField] private float invinsibilityTimer;
+    private float invinsibilityCounter;
 
     private float moveValue;
 
@@ -144,6 +147,11 @@ public class PlayerPlatformerController : MonoBehaviour
         }
     }
 
+    public void ActivateIFrames()
+    {
+
+    }
+
     public bool GetInteractionStatus()
     {
         return isInteracting;
@@ -196,7 +204,7 @@ public class PlayerPlatformerController : MonoBehaviour
         {
             if (isSprinting)
             {
-                _rb2d.velocity = new Vector2(moveValue * SprintMultiplier, Mathf.Max(_rb2d.velocity.y, MaxFallSpeed));
+                _rb2d.velocity = new Vector2(moveValue * SprintMultiplier, Mathf.Max(_rb2d.velocity.y, -MaxFallSpeed));
             }
             else
             {
