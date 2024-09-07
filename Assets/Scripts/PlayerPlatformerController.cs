@@ -299,6 +299,10 @@ public class PlayerPlatformerController : MonoBehaviour
                 invinsibilityCounter -= Time.deltaTime;
             }
         }
+        else
+        {
+            _rb2d.velocity = Vector2.zero;
+        }
     }
 
     private void OnDestroy()
