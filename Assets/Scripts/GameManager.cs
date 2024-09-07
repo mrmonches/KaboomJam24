@@ -1,6 +1,7 @@
 using JetBrains.Annotations;
 using System.Collections;
 using System.Collections.Generic;
+using System.Threading;
 using UnityEngine;
 
 public class GameManager : MonoBehaviour
@@ -14,30 +15,26 @@ public class GameManager : MonoBehaviour
 
     private void Start()
     {
-        AssignDrinks();
-    }
-
-    private void AssignDrinks()
-    {
         foreach (CustomerController customer in customers)
         {
-            if (availableDrinks.Count <= 0)
-            {
-                foreach (DrinkData drink in drinks)
-                {
-                    availableDrinks.Add(drink);
-                }
-            }
-            int rand = Random.Range(0, availableDrinks.Count);
-            Debug.Log(rand + " " + availableDrinks[rand].getDrinkName());
-            customer.setOrder(availableDrinks[rand]);
-            availableDrinks.RemoveAt(rand);
-            
+            AssignDrinks(customer);
+
         }
-       
-
     }
-
+    public void AssignDrinks (CustomerController customer)
+    {
+        if (availableDrinks.Count <= 0)
+        {
+            foreach (DrinkData drink in drinks)
+            {
+                availableDrinks.Add(drink);
+            }
+        }
+        int rand = Random.Range(0, availableDrinks.Count);
+        Debug.Log(rand + " " + availableDrinks[rand].getDrinkName());
+        customer.setOrder(availableDrinks[rand]);
+        availableDrinks.RemoveAt(rand);
+    }
     public bool hasReachedQuota()
     {
         return money >= maxMoney;
