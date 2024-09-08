@@ -33118,6 +33118,8 @@ MonoBehaviour:
   - {fileID: 21300000, guid: e0384286217da1e40a0a0f0d1aeddb88, type: 3}
   - {fileID: 21300000, guid: 3910fa513ee35f945ab3341a5f25d398, type: 3}
   - {fileID: 21300000, guid: 8356d6b28a8202940be99287da8e5d69, type: 3}
+  - {fileID: 21300000, guid: 1dd45819df2eaa0429cb0ddc750e0bfd, type: 3}
+  - {fileID: 21300000, guid: 4a01cd9edb4143c408ff3629facda704, type: 3}
   drinks:
   - {fileID: 11400000, guid: 3ce772ab61c622d4e899702433a1cfaa, type: 2}
   - {fileID: 11400000, guid: 081b02bb385aa154cb25055c828f4e68, type: 2}
