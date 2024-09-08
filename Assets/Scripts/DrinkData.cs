@@ -6,6 +6,7 @@ public class DrinkData : ScriptableObject
     [SerializeField] private Vector3 DrinkContents;
     [SerializeField] private Sprite DrinkSprite;
     [SerializeField] private string DrinkName;
+    [SerializeField] private string DrinkFlavorText;
 
     public Vector3 GetDrinkContents()
     {
@@ -19,5 +20,10 @@ public class DrinkData : ScriptableObject
     public Sprite GetDrinkSprite()
     {
         return DrinkSprite;
+    }
+
+    public string getDrinkFlavorText()
+    {
+        return DrinkFlavorText;
     }
 }

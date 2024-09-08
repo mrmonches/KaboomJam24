@@ -55,6 +55,10 @@ public class DrinkMenuManager : MonoBehaviour
 
     [SerializeField] private List<Button> buttons;
 
+    [SerializeField] private GameObject drinkCompleteMenu;
+    [SerializeField] private TMP_Text flavorText;
+    [SerializeField] private TMP_Text drinkNameText;
+    [SerializeField] private Image drink;
     
     // Start is called before the first frame update
     private void OnEnable()
@@ -155,18 +159,28 @@ public class DrinkMenuManager : MonoBehaviour
 
         if (currentDrinkStats == currentOrder)
         {
-            Debug.Log("order complete");
-            orderComplete = true;
-            FindObjectOfType<GameManager>().DrinkCompleted(IngredientProfit * currentDrink.Count);
-            FindObjectOfType<GameManager>().ShowMoney();
-            currentCustomer.CustomerComplete();
+            OpenDrinkCompleteMenu();
         }
         else
         {
-            Debug.Log("fuck you");
+            StartCoroutine(CloseMenu());
         }
-
+    }
+    public void CloseDrinkCompleteMenu()
+    {
+        drinkCompleteMenu.SetActive(false);
+        orderComplete = true;
+        FindObjectOfType<GameManager>().DrinkCompleted(IngredientProfit * currentDrink.Count);
+        FindObjectOfType<GameManager>().ShowMoney();
+        currentCustomer.CustomerComplete();
         StartCoroutine(CloseMenu());
+    }
+    private void OpenDrinkCompleteMenu()
+    {
+        drinkCompleteMenu.SetActive(true);
+        drink.sprite = currentCustomer.getOrder().GetDrinkSprite();
+        drinkNameText.text = currentCustomer.getOrder().getDrinkName();
+        flavorText.text = currentCustomer.getOrder().getDrinkFlavorText();
     }
     public IEnumerator CloseMenu()
     {
