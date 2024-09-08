@@ -5,15 +5,13 @@ using UnityEngine;
 
 public class MainMusicManager : MonoBehaviour
 {
-    private AudioSource _audioSource;
-    [SerializeField] private AudioClip MainLoop;
+    [SerializeField] private AudioSource MainLoop;
+    [SerializeField] private AudioSource MainIntro;
 
     [SerializeField] private float IntroTimer;
 
     private void Awake()
     {
-        _audioSource = GetComponent<AudioSource>();
-
         StartCoroutine("LoopDelay");
     }
 
@@ -23,9 +21,9 @@ public class MainMusicManager : MonoBehaviour
         {
             yield return new WaitForSeconds(IntroTimer);
 
-            _audioSource.PlayOneShot(MainLoop);
+            MainIntro.Stop();
 
-            _audioSource.loop = true;
+            MainLoop.Play();
         }
     }
 }
