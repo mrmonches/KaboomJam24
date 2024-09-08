@@ -13,6 +13,6 @@ MonoBehaviour:
   m_Name: FroggyDrink
   m_EditorClassIdentifier: 
   DrinkContents: {x: 3, y: 2, z: 0}
-  DrinkSprite: {fileID: 0}
+  DrinkSprite: {fileID: 21300000, guid: e63d950628bc18743a76496884a71aa3, type: 3}
   DrinkName: Froggy Drink
   DrinkFlavorText: Like the chair
