@@ -1160,7 +1160,9 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   isOrdering: 0
+  isGone: 0
   order: {fileID: 0}
+  TimeUntilBack: 3
 --- !u!1 &1216928069
 GameObject:
   m_ObjectHideFlags: 0
@@ -1198,6 +1200,7 @@ MonoBehaviour:
   availableDrinks: []
   customers:
   - {fileID: 1207425457}
+  moneyText: {fileID: 0}
 --- !u!4 &1216928071
 Transform:
   m_ObjectHideFlags: 0
@@ -1459,6 +1462,10 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 1846888877722417260, guid: ff4ee980122deaf4591f2d282cf37ef8, type: 3}
+      propertyPath: JumpClip
+      value: 
+      objectReference: {fileID: 8300000, guid: 312081fbef348994285062400161d17e, type: 3}
     - target: {fileID: 1846888877722417260, guid: ff4ee980122deaf4591f2d282cf37ef8, type: 3}
       propertyPath: DrinkMenu
       value: 
