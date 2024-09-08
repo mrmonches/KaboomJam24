@@ -4,7 +4,7 @@ using UnityEngine.UIElements;
 
 public class CustomerController : MonoBehaviour
 {
-    private PlayerPlatformerController playerController;
+    [SerializeField] private PlayerPlatformerController playerController;
 
     public bool isOrdering = false;
     [SerializeField] private bool isGone = false;
@@ -38,6 +38,14 @@ public class CustomerController : MonoBehaviour
     }
 
     private void OnTriggerEnter2D(Collider2D collision)
+    {
+        if (collision.gameObject.CompareTag("Player"))
+        {
+            playerController = collision.gameObject.GetComponent<PlayerPlatformerController>();
+        }
+    }
+
+    private void OnTriggerStay2D(Collider2D collision)
     {
         if (collision.gameObject.CompareTag("Player"))
         {

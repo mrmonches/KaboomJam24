@@ -132,7 +132,7 @@ public class PlayerPlatformerController : MonoBehaviour
 
             coyoteTimeCounter = 0;
 
-            //_audioSource.PlayOneShot(JumpClip);
+            _audioSource.PlayOneShot(JumpClip);
         }
     }
 
@@ -251,7 +251,7 @@ public class PlayerPlatformerController : MonoBehaviour
 
             if (bufferTimeCounter > 0)
             {
-                //_audioSource.PlayOneShot(JumpClip);
+                _audioSource.PlayOneShot(JumpClip);
 
                 PlayerJump();
             }

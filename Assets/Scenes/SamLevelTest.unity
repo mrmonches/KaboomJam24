@@ -32555,6 +32555,10 @@ PrefabInstance:
       value: 
       objectReference: {fileID: 145072459}
     - target: {fileID: 1846888877722417260, guid: ff4ee980122deaf4591f2d282cf37ef8, type: 3}
+      propertyPath: JumpClip
+      value: 
+      objectReference: {fileID: 8300000, guid: 8917c0045c86b164080d5ddd75aca5cd, type: 3}
+    - target: {fileID: 1846888877722417260, guid: ff4ee980122deaf4591f2d282cf37ef8, type: 3}
       propertyPath: DrinkMenu
       value: 
       objectReference: {fileID: 1175538763119460739}
@@ -32762,6 +32766,10 @@ PrefabInstance:
     - target: {fileID: 2814741247971538189, guid: 51f87636c75bbbb4380859fa546a797b, type: 3}
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 3509128754107805655, guid: 51f87636c75bbbb4380859fa546a797b, type: 3}
+      propertyPath: m_IsActive
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 5623738224476422422, guid: 51f87636c75bbbb4380859fa546a797b, type: 3}
       propertyPath: m_Name
