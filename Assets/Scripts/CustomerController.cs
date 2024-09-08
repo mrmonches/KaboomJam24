@@ -63,7 +63,6 @@ public class CustomerController : MonoBehaviour
         if (playerController != null && playerController.GetInteractionStatus() && !isOrdering && !isGone)
         {
             isOrdering = true;
-            Debug.Log("gave " + order.GetDrinkContents());
             playerController.ManageDrinkMenuStatus(this);
         }
     }

@@ -33,7 +33,6 @@ public class GameManager : MonoBehaviour
             }
         }
         int rand = Random.Range(0, availableDrinks.Count);
-        Debug.Log(rand + " " + availableDrinks[rand].getDrinkName());
         customer.setOrder(availableDrinks[rand]);
         availableDrinks.RemoveAt(rand);
     }
