@@ -1,16 +1,35 @@
+using System.Collections;
 using UnityEngine;
+using UnityEngine.UIElements;
 
 public class CustomerController : MonoBehaviour
 {
     private PlayerPlatformerController playerController;
 
     public bool isOrdering = false;
+    [SerializeField] private bool isGone = false;
 
     [SerializeField] private DrinkData order;
-
+    [SerializeField] private float TimeUntilBack = 3f;
     public void setOrder(DrinkData order)
     {
         this.order = order;
+    }
+
+    public IEnumerator ComeBack()
+    {
+        isGone = true;
+        GetComponent<SpriteRenderer>().color = new Color (0, 0, 0, 0.5f);
+        yield return new WaitForSecondsRealtime(TimeUntilBack);
+        FindObjectOfType<GameManager>().AssignDrinks(this);
+        isGone = false;
+        GetComponent<SpriteRenderer>().color = new Color(255, 255, 255, 1);
+
+    }
+
+    public void CustomerComplete()
+    {
+        StartCoroutine(ComeBack());
     }
 
     public DrinkData getOrder()
@@ -33,7 +52,7 @@ public class CustomerController : MonoBehaviour
 
     private void FixedUpdate()
     {
-        if (playerController != null && playerController.GetInteractionStatus() && !isOrdering)
+        if (playerController != null && playerController.GetInteractionStatus() && !isOrdering && !isGone)
         {
             isOrdering = true;
             Debug.Log("gave " + order.GetDrinkContents());

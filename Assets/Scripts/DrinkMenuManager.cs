@@ -48,6 +48,7 @@ public class DrinkMenuManager : MonoBehaviour
 
 
     private int[] inventory = new int[6];
+    [SerializeField] private TMP_Text[] inventoryTexts; 
 
     [SerializeField] private CustomerController currentCustomer;
     private bool orderComplete = false;
@@ -59,10 +60,10 @@ public class DrinkMenuManager : MonoBehaviour
     private void OnEnable()
     {
         currentDrink.Clear();
-        /*for (int i = 0; i < 6; i++)
+        for (int i = 0; i < 6; i++)
         {
             inventory[i] = FindObjectOfType<PlayerInventoryController>().InventoryContents[i];
-        }*/
+        }
         foreach (GameObject go in DrinkLayers)
         {
             go.SetActive(false);
@@ -73,7 +74,7 @@ public class DrinkMenuManager : MonoBehaviour
 
     public void AddIngredient (int IngredientEnumNumber)
     {
-        if (currentDrink.Count < 5 )
+        if (currentDrink.Count < 5 && inventory[IngredientEnumNumber] > 0)
         {
             int count = 0;
             while (count < currentDrink.Count)
@@ -88,13 +89,14 @@ public class DrinkMenuManager : MonoBehaviour
             /*currentDrinkStats += new Vector3(possibleIngredients[IngredientEnumNumber].getSweet(),
                 possibleIngredients[IngredientEnumNumber].getSour(),
                 possibleIngredients[IngredientEnumNumber].getSpicy());*/
-
+            inventory[IngredientEnumNumber]--;
 
             UpdateText();
         }
     }
     public void RemoveIngredient(int positionToRemove)
     {
+        inventory[(int)currentDrink[positionToRemove].getIngType()]++;
         currentDrink.RemoveAt(positionToRemove);
         UpdateText();
     }
@@ -109,6 +111,11 @@ public class DrinkMenuManager : MonoBehaviour
         sweetText.GetComponent<TMP_Text>().text = currentDrinkStats.x.ToString();
         sourText.GetComponent<TMP_Text>().text = currentDrinkStats.y.ToString();
         saltyText.GetComponent<TMP_Text>().text = currentDrinkStats.z.ToString();
+
+        for (int i = 0; i < 6; i++)
+        {
+            inventoryTexts[i].text = inventory[i].ToString();
+        }
 
         int count = 0;
         foreach (GameObject go in DrinkLayers)
@@ -140,11 +147,19 @@ public class DrinkMenuManager : MonoBehaviour
             currentDrinkStats.z = 0;
         }
         Debug.Log(currentDrinkStats);
+
+        for (int i = 0; i < 6; i++)
+        {
+            FindObjectOfType<PlayerInventoryController>().InventoryContents[i] = inventory[i];
+        }
+
         if (currentDrinkStats == currentOrder)
         {
             Debug.Log("order complete");
             orderComplete = true;
-            GameObject.FindGameObjectWithTag("Manager").GetComponent<GameManager>().DrinkCompleted(IngredientProfit);
+            FindObjectOfType<GameManager>().DrinkCompleted(IngredientProfit * currentDrink.Count);
+            FindObjectOfType<GameManager>().ShowMoney();
+            currentCustomer.CustomerComplete();
         }
         else
         {
@@ -156,6 +171,7 @@ public class DrinkMenuManager : MonoBehaviour
     public IEnumerator CloseMenu()
     {
         yield return new WaitForEndOfFrame();
+        
         currentCustomer.isOrdering = false;
         FindObjectOfType<PlayerPlatformerController>().ManageDrinkMenuStatus(null);
     }
@@ -173,7 +189,7 @@ public class DrinkMenuManager : MonoBehaviour
         orderSweetText.GetComponent<TMP_Text>().text = currentOrder.x.ToString();
         orderSourText.GetComponent<TMP_Text>().text = currentOrder.y.ToString();
         orderSaltyText.GetComponent<TMP_Text>().text = currentOrder.z.ToString();
-
+        FindObjectOfType<GameManager>().HideMoney();
         if (customer.getOrder().GetDrinkSprite() != null) 
         {
             customerPortrait.GetComponent<Image>().sprite = customer.getOrder().GetDrinkSprite();
