@@ -67,6 +67,7 @@ public class PlayerPlatformerController : MonoBehaviour
     private float opacityCounter;
 
     [SerializeField] private Animator IngredientOne, IngredientTwo, IngredientThree;
+    [SerializeField] private GameObject EmptyParent;
 
     private void Awake()
     {
@@ -131,7 +132,7 @@ public class PlayerPlatformerController : MonoBehaviour
 
             coyoteTimeCounter = 0;
 
-            //_audioSource.PlayOneShot(JumpClip);
+            _audioSource.PlayOneShot(JumpClip);
         }
     }
 
@@ -201,6 +202,12 @@ public class PlayerPlatformerController : MonoBehaviour
 
             decreaseOpacity = true;
 
+            GameObject Parent = Instantiate(EmptyParent, transform.position, Quaternion.identity);
+
+            IngredientOne.transform.parent = Parent.transform;
+            IngredientTwo.transform.parent = Parent.transform;
+            IngredientThree.transform.parent = Parent.transform;
+
             IngredientOne.SetTrigger("Hurt");
             IngredientTwo.SetTrigger("Hurt");
             IngredientThree.SetTrigger("Hurt");
@@ -244,7 +251,7 @@ public class PlayerPlatformerController : MonoBehaviour
 
             if (bufferTimeCounter > 0)
             {
-                //_audioSource.PlayOneShot(JumpClip);
+                _audioSource.PlayOneShot(JumpClip);
 
                 PlayerJump();
             }
