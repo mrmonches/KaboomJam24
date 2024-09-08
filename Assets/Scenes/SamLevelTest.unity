@@ -32459,6 +32459,10 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 1475840561405396548, guid: 436979a54ade5d44da8b02d8e49e6c19, type: 3}
+      propertyPath: m_ConstrainProportionsScale
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 1740743820982132697, guid: 436979a54ade5d44da8b02d8e49e6c19, type: 3}
       propertyPath: m_Interactable
       value: 0
@@ -32506,6 +32510,38 @@ PrefabInstance:
     - target: {fileID: 4441827011837192749, guid: 436979a54ade5d44da8b02d8e49e6c19, type: 3}
       propertyPath: m_Name
       value: Timer
+      objectReference: {fileID: 0}
+    - target: {fileID: 4552331718192520682, guid: 436979a54ade5d44da8b02d8e49e6c19, type: 3}
+      propertyPath: m_LocalScale.x
+      value: 2.8047328
+      objectReference: {fileID: 0}
+    - target: {fileID: 4552331718192520682, guid: 436979a54ade5d44da8b02d8e49e6c19, type: 3}
+      propertyPath: m_LocalScale.y
+      value: 2.8047328
+      objectReference: {fileID: 0}
+    - target: {fileID: 4552331718192520682, guid: 436979a54ade5d44da8b02d8e49e6c19, type: 3}
+      propertyPath: m_LocalScale.z
+      value: 2.8047328
+      objectReference: {fileID: 0}
+    - target: {fileID: 4552331718192520682, guid: 436979a54ade5d44da8b02d8e49e6c19, type: 3}
+      propertyPath: m_AnchoredPosition.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4552331718192520682, guid: 436979a54ade5d44da8b02d8e49e6c19, type: 3}
+      propertyPath: m_AnchoredPosition.y
+      value: 16
+      objectReference: {fileID: 0}
+    - target: {fileID: 4677112396085056595, guid: 436979a54ade5d44da8b02d8e49e6c19, type: 3}
+      propertyPath: m_UiScaleMode
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 4677112396085056595, guid: 436979a54ade5d44da8b02d8e49e6c19, type: 3}
+      propertyPath: m_ReferenceResolution.x
+      value: 1920
+      objectReference: {fileID: 0}
+    - target: {fileID: 4677112396085056595, guid: 436979a54ade5d44da8b02d8e49e6c19, type: 3}
+      propertyPath: m_ReferenceResolution.y
+      value: 1080
       objectReference: {fileID: 0}
     - target: {fileID: 6277221012928081486, guid: 436979a54ade5d44da8b02d8e49e6c19, type: 3}
       propertyPath: m_RenderMode
