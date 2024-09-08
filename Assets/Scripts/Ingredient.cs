@@ -11,7 +11,6 @@ public class Ingredient
     [SerializeField] private int sour;
     [SerializeField] private int spicy;
     [SerializeField] private Sprite spr;
-    [SerializeField] private Color col;
 
 
     public DrinkMenuManager.IngredientTypes getIngType()
@@ -34,17 +33,12 @@ public class Ingredient
     {
         return spr;
     }
-    public Color getCol()
-    {
-        return col;
-    }
-    public Ingredient(int sweet, int sour, int spicy, DrinkMenuManager.IngredientTypes type, Sprite spr, Color col)
+    public Ingredient(int sweet, int sour, int spicy, DrinkMenuManager.IngredientTypes type, Sprite spr)
     {
         this.sweet = sweet;
         this.sour = sour;
         this.spicy = spicy;
         this.type = type;
         this.spr = spr; 
-        this.col = col;
     }
 }
