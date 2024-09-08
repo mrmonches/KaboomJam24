@@ -16,7 +16,7 @@ public class PlayerInteractiveController : MonoBehaviour
 
     private float timer;
 
-    /*private void Awake()
+    private void Awake()
     {
         playerController = PlayerObject.GetComponent<PlayerPlatformerController>();
 
@@ -36,10 +36,15 @@ public class PlayerInteractiveController : MonoBehaviour
         {
             Circle.fillAmount = 0f;
         }
+        else if (Circle.fillAmount == 1f)
+        {
+            playerController.SetInteractionStatus(false);
+            Circle.fillAmount = 0f;
+        }
         else if (playerController.GetInteractionStatus() && playerController.CheckUIStatus())
         {
             ProgressCircle();
-        }*/
+        }
 
         // Testing Circle timer, use if change bar interaction length
         //if (Circle.fillAmount > 0 && Circle.fillAmount < 1)
@@ -56,5 +61,5 @@ public class PlayerInteractiveController : MonoBehaviour
         //}
 
         //incrementCalculation = barController.GetDelayTimer() / Increment;
-    //}
+    }
 }
