@@ -69,6 +69,8 @@ public class PlayerPlatformerController : MonoBehaviour
     [SerializeField] private Animator IngredientOne, IngredientTwo, IngredientThree;
     [SerializeField] private GameObject EmptyParent;
 
+    [SerializeField] private GameObject PauseMenu;
+
     private void Awake()
     {
         _playerInput = GetComponent<PlayerInput>();
@@ -175,6 +177,18 @@ public class PlayerPlatformerController : MonoBehaviour
         if (invinsibilityCounter <= 0)
         {
             isInteracting = false;
+        }
+    }
+
+    private void OnPause()
+    {
+        if (Time.timeScale == 1f)
+        {
+            PauseMenu.SetActive(true);
+        }
+        else
+        {
+            PauseMenu.SetActive(false);
         }
     }
 
