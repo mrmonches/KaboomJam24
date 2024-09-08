@@ -22,9 +22,9 @@ public class GameManager : MonoBehaviour
         foreach (CustomerController customer in customers)
         {
             AssignDrinks(customer);
-            int rand = Random.Range(0, portraits.Count);
-            customer.portrait = portraits[rand];
-            portraits.RemoveAt(rand);
+            //int rand = Random.Range(0, portraits.Count);
+            //customer.portrait = portraits[rand];
+            //portraits.RemoveAt(rand);
         }
     }
     public void AssignDrinks (CustomerController customer)
