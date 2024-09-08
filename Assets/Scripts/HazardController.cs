@@ -2,7 +2,7 @@ using UnityEngine;
 
 public class HazardController : MonoBehaviour
 {
-
+    [SerializeField] private Animator _hazardAnimator;
     private void OnTriggerEnter2D(Collider2D collision)
     {
         GameObject incomingCollision = collision.gameObject;
@@ -11,9 +11,8 @@ public class HazardController : MonoBehaviour
         {
             incomingCollision.GetComponent<PlayerPlatformerController>().ActivateIFrames();
 
-            //Play sound
-
             //Play animation
+            _hazardAnimator.SetTrigger("Attack");
 
         }
     }
