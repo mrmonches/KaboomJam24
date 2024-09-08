@@ -13,5 +13,6 @@ MonoBehaviour:
   m_Name: AshySarah
   m_EditorClassIdentifier: 
   DrinkContents: {x: 0, y: 0, z: 6}
-  DrinkSprite: {fileID: 0}
+  DrinkSprite: {fileID: 21300000, guid: 045811f6d9bc88b44899b6f22f041a78, type: 3}
   DrinkName: Ashy Sarah
+  DrinkFlavorText: Ashy Sarah Flavor Text Poggies

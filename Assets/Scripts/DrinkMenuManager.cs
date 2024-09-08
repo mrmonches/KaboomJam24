@@ -28,7 +28,7 @@ public class DrinkMenuManager : MonoBehaviour
         Tooltip("Enum is ingredient name, then add the ingredient's stats into the three digits")] 
     private List<Ingredient> possibleIngredients = new List<Ingredient>();
     [SerializeField, Header("Enter how much money each ingredient is worth here")] private int IngredientProfit;
-
+    
     
     [SerializeField, Header("Debugging and refrences")] private List<Ingredient> currentDrink = new List<Ingredient>();
 
@@ -51,9 +51,6 @@ public class DrinkMenuManager : MonoBehaviour
     [SerializeField] private TMP_Text[] inventoryTexts; 
 
     [SerializeField] private CustomerController currentCustomer;
-    private bool orderComplete = false;
-
-    [SerializeField] private List<Button> buttons;
 
     [SerializeField] private GameObject drinkCompleteMenu;
     [SerializeField] private TMP_Text flavorText;
@@ -163,17 +160,16 @@ public class DrinkMenuManager : MonoBehaviour
         }
         else
         {
-            StartCoroutine(CloseMenu());
+            CloseMenu();
         }
     }
     public void CloseDrinkCompleteMenu()
     {
         drinkCompleteMenu.SetActive(false);
-        orderComplete = true;
         FindObjectOfType<GameManager>().DrinkCompleted(IngredientProfit * currentDrink.Count);
         FindObjectOfType<GameManager>().ShowMoney();
         currentCustomer.CustomerComplete();
-        StartCoroutine(CloseMenu());
+        CloseMenu();
     }
     private void OpenDrinkCompleteMenu()
     {
@@ -182,21 +178,15 @@ public class DrinkMenuManager : MonoBehaviour
         drinkNameText.text = currentCustomer.getOrder().getDrinkName();
         flavorText.text = currentCustomer.getOrder().getDrinkFlavorText();
     }
-    public IEnumerator CloseMenu()
+    
+    public void CloseMenu()
     {
-        yield return new WaitForSeconds(0.2f);
-        
         currentCustomer.isOrdering = false;
         FindObjectOfType<PlayerPlatformerController>().ManageDrinkMenuStatus(null);
-    }
-    public void TriggerMenuClose()
-    {
-        StartCoroutine(CloseMenu());
     }
 
     public void NewOrder(CustomerController customer)
     {
-        orderComplete = false;
         currentCustomer = customer;
         currentOrder = customer.getOrder().GetDrinkContents();
 
