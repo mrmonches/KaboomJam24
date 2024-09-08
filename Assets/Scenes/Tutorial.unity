@@ -7456,6 +7456,34 @@ PrefabInstance:
       propertyPath: DrinkMenu
       value: 
       objectReference: {fileID: 261284470}
+    - target: {fileID: 3077455885297193545, guid: ff4ee980122deaf4591f2d282cf37ef8, type: 3}
+      propertyPath: MaxItemAmount
+      value: 7
+      objectReference: {fileID: 0}
+    - target: {fileID: 3077455885297193545, guid: ff4ee980122deaf4591f2d282cf37ef8, type: 3}
+      propertyPath: InventoryContents.Array.data[0]
+      value: 7
+      objectReference: {fileID: 0}
+    - target: {fileID: 3077455885297193545, guid: ff4ee980122deaf4591f2d282cf37ef8, type: 3}
+      propertyPath: InventoryContents.Array.data[1]
+      value: 7
+      objectReference: {fileID: 0}
+    - target: {fileID: 3077455885297193545, guid: ff4ee980122deaf4591f2d282cf37ef8, type: 3}
+      propertyPath: InventoryContents.Array.data[2]
+      value: 7
+      objectReference: {fileID: 0}
+    - target: {fileID: 3077455885297193545, guid: ff4ee980122deaf4591f2d282cf37ef8, type: 3}
+      propertyPath: InventoryContents.Array.data[3]
+      value: 7
+      objectReference: {fileID: 0}
+    - target: {fileID: 3077455885297193545, guid: ff4ee980122deaf4591f2d282cf37ef8, type: 3}
+      propertyPath: InventoryContents.Array.data[4]
+      value: 7
+      objectReference: {fileID: 0}
+    - target: {fileID: 3077455885297193545, guid: ff4ee980122deaf4591f2d282cf37ef8, type: 3}
+      propertyPath: InventoryContents.Array.data[5]
+      value: 7
+      objectReference: {fileID: 0}
     - target: {fileID: 3156737542760736818, guid: ff4ee980122deaf4591f2d282cf37ef8, type: 3}
       propertyPath: MaxDistance
       value: 1.000001
