@@ -1728,7 +1728,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!4 &8571894666341464980
 Transform:
   m_ObjectHideFlags: 0
@@ -5463,7 +5463,10 @@ MonoBehaviour:
   - {fileID: 3056962594341304885}
   currentCustomer: {fileID: 0}
   buttons: []
-  drinkCompleteMenu: {fileID: 0}
+  drinkCompleteMenu: {fileID: 1824075770697431620}
+  flavorText: {fileID: 8259712500196505294}
+  drinkNameText: {fileID: 1528275746997874909}
+  drink: {fileID: 737118173332377741}
 --- !u!1 &6884217495244577145
 GameObject:
   m_ObjectHideFlags: 0

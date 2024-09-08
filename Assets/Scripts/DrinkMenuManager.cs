@@ -184,7 +184,7 @@ public class DrinkMenuManager : MonoBehaviour
     }
     public IEnumerator CloseMenu()
     {
-        yield return new WaitForEndOfFrame();
+        yield return new WaitForSeconds(0.2f);
         
         currentCustomer.isOrdering = false;
         FindObjectOfType<PlayerPlatformerController>().ManageDrinkMenuStatus(null);
