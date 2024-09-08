@@ -28,7 +28,7 @@ public class PlayerPlatformerController : MonoBehaviour
     private bool isSprinting;
     private bool isMidair;
     private bool isInteracting;
-    private static bool isMixing;
+    public static bool isMixing;
     public static bool canMove;
 
     private bool canUI;
