@@ -15,4 +15,4 @@ MonoBehaviour:
   DrinkContents: {x: 5, y: 1, z: 0}
   DrinkSprite: {fileID: 21300000, guid: c536db6de2ba3fb42bc7e527ca63d85a, type: 3}
   DrinkName: Pan Galactic Gargle Blaster
-  DrinkFlavorText: Please don't sue us Douglas
+  DrinkFlavorText: David did this to you
