@@ -69,6 +69,8 @@ public class PlayerPlatformerController : MonoBehaviour
     [SerializeField] private Animator IngredientOne, IngredientTwo, IngredientThree;
     [SerializeField] private GameObject EmptyParent;
 
+    private Animator _playerAnimator;
+
     [SerializeField] private GameObject PauseMenu;
 
     private void Awake()
@@ -103,11 +105,15 @@ public class PlayerPlatformerController : MonoBehaviour
         _audioSource = GetComponent<AudioSource>();
 
         _spriteRenderer = GetComponent<SpriteRenderer>();
+
+        _playerAnimator = GetComponent<Animator>();
     }
 
     private void MoveAction_started(InputAction.CallbackContext obj)
     {
         moveValue = moveAction.ReadValue<float>() * MoveSpeed;
+
+        _playerAnimator.SetBool("IsWalking", true);
 
         if (moveAction.ReadValue<float>() > 0 && !_spriteRenderer.flipX)
         {
@@ -122,6 +128,8 @@ public class PlayerPlatformerController : MonoBehaviour
     private void MoveAction_canceled(InputAction.CallbackContext obj)
     {
         moveValue = 0f;
+
+        _playerAnimator.SetBool("IsWalking", false);
     }
 
     private void JumpAction_started(InputAction.CallbackContext obj)
@@ -271,6 +279,8 @@ public class PlayerPlatformerController : MonoBehaviour
             }
 
             isMidair = false;
+
+            _playerAnimator.SetBool("InAir", false);
         }
         else
         {
@@ -280,6 +290,8 @@ public class PlayerPlatformerController : MonoBehaviour
             }
 
             isMidair = true;
+
+            _playerAnimator.SetBool("InAir", true);
         }
     }
 
