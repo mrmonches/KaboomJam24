@@ -19,7 +19,7 @@ public class GameManager : MonoBehaviour
 
     private void Start()
     {
-        PlayerPlatformerController.isMixing = false;
+        PlayerPlatformerController.canMove = true;
         foreach (CustomerController customer in customers)
         {
             AssignDrinks(customer);

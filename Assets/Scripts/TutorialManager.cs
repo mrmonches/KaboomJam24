@@ -19,7 +19,11 @@ public class TutorialManager : MonoBehaviour
 
     private void Start()
     {
-        PlayerPlatformerController.isMixing = true;
+        PlayerPlatformerController.canMove = false;
+        SecondPopupDone = false;
+        FifthPopupDone = false;
+        SixthPopupDone = false;
+        NinthPopupDone = false;
     }
 
     public void NextPopup(int index)
@@ -28,7 +32,7 @@ public class TutorialManager : MonoBehaviour
         {
             case 0:
                 TutorialPopups[0].SetActive(false);
-                PlayerPlatformerController.isMixing = false;
+                PlayerPlatformerController.canMove = true;
                 menuManager.canClickIngredients = false;
                 menuManager.canClickGlass = false;
                 menuManager.canClose = false;
@@ -82,15 +86,15 @@ public class TutorialManager : MonoBehaviour
             case 11:
                 TutorialPopups[9].SetActive(true);
                 customer.setOrder(drink2);
-                PlayerPlatformerController.isMixing = true;
+                PlayerPlatformerController.canMove = false;
                 break;
             case 12:
                 TutorialPopups[9].SetActive(false);
-                PlayerPlatformerController.isMixing = false;
+                PlayerPlatformerController.canMove = true;
                 break;
             case 13:
                 TutorialPopups[10].SetActive(true);
-                PlayerPlatformerController.isMixing = true;
+                PlayerPlatformerController.canMove = false;
                 break;
             case 14:
                 TutorialPopups[10].SetActive(false);

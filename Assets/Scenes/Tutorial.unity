@@ -7023,17 +7023,6 @@ PrefabInstance:
     m_AddedGameObjects: []
     m_AddedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: ff4ee980122deaf4591f2d282cf37ef8, type: 3}
---- !u!114 &1093427019 stripped
-MonoBehaviour:
-  m_CorrespondingSourceObject: {fileID: 1846888877722417260, guid: ff4ee980122deaf4591f2d282cf37ef8, type: 3}
-  m_PrefabInstance: {fileID: 1093427018}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 0}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: fe474a5facaa4734e904174dc000c3f2, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
 --- !u!1 &1095130186
 GameObject:
   m_ObjectHideFlags: 0
@@ -9010,13 +8999,17 @@ PrefabInstance:
       value: 
       objectReference: {fileID: 11400000, guid: 40869c5fb4885b7469abe924c2341bcd, type: 2}
     - target: {fileID: 5741305043153248300, guid: 2c85a70ac92581d4689bf95b49b94eb9, type: 3}
+      propertyPath: isOrdering
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 5741305043153248300, guid: 2c85a70ac92581d4689bf95b49b94eb9, type: 3}
       propertyPath: TimeUntilBack
       value: 999999
       objectReference: {fileID: 0}
     - target: {fileID: 5741305043153248300, guid: 2c85a70ac92581d4689bf95b49b94eb9, type: 3}
       propertyPath: playerController
       value: 
-      objectReference: {fileID: 1093427019}
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
