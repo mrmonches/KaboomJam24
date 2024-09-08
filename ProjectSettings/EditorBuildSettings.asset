@@ -9,15 +9,12 @@ EditorBuildSettings:
     path: Assets/Scenes/MainMenu.unity
     guid: d6b540bc7b51b1941a5cd7493828600a
   - enabled: 1
-    path: Assets/Scenes/PlatformTesting.unity
-    guid: 8c9cfa26abfee488c85f1582747f6a02
-  - enabled: 1
-    path: Assets/Scenes/LoseScene.unity
-    guid: 7adda22c783ce93438608d285a41ab59
+    path: Assets/Scenes/SamLevelTest.unity
+    guid: f1d26e7829db1ef438ac25968b149509
   - enabled: 1
     path: Assets/Scenes/WinScene.unity
     guid: 0d92853b09378cd43a24b786c3bd882e
   - enabled: 1
-    path: Assets/Scenes/SamLevelTest.unity
-    guid: f1d26e7829db1ef438ac25968b149509
+    path: Assets/Scenes/LoseScene.unity
+    guid: 7adda22c783ce93438608d285a41ab59
   m_configObjects: {}
