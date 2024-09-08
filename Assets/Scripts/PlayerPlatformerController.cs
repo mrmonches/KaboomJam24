@@ -28,7 +28,8 @@ public class PlayerPlatformerController : MonoBehaviour
     private bool isSprinting;
     private bool isMidair;
     private bool isInteracting;
-    public static bool isMixing;
+    private static bool isMixing;
+    public static bool canMove;
 
     private bool canUI;
 
@@ -271,8 +272,6 @@ public class PlayerPlatformerController : MonoBehaviour
         {
             coyoteTimeCounter = CoyoteTimer;
 
-            print(BoxCasthit.collider.name);
-
             if (bufferTimeCounter > 0)
             {
                 _audioSource.PlayOneShot(JumpClip);
@@ -330,7 +329,7 @@ public class PlayerPlatformerController : MonoBehaviour
 
     private void FixedUpdate()
     {
-        if (!isMixing) 
+        if (!isMixing && canMove) 
         {
             if (isSprinting)
             {
