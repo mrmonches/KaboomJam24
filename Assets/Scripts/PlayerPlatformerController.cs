@@ -271,6 +271,8 @@ public class PlayerPlatformerController : MonoBehaviour
         {
             coyoteTimeCounter = CoyoteTimer;
 
+            print(BoxCasthit.collider.name);
+
             if (bufferTimeCounter > 0)
             {
                 _audioSource.PlayOneShot(JumpClip);
