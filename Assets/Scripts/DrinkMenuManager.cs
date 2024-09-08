@@ -219,7 +219,7 @@ public class DrinkMenuManager : MonoBehaviour
     
     public void CloseMenu()
     {
-        if (!isTutorial || canClose)
+        if (!isTutorial)
         {
             currentCustomer.isOrdering = false;
             FindObjectOfType<PlayerPlatformerController>().ManageDrinkMenuStatus(null);
