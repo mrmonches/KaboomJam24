@@ -15,4 +15,4 @@ MonoBehaviour:
   DrinkContents: {x: 0, y: 0, z: 20}
   DrinkSprite: {fileID: 21300000, guid: 6e45fb72b561d2a46a8d12e916328135, type: 3}
   DrinkName: Grandma's Ashes
-  DrinkFlavorText: Grandmas Ashes Flavor Text
+  DrinkFlavorText: I'm uncomfortable with this

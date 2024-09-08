@@ -13,5 +13,6 @@ MonoBehaviour:
   m_Name: WhiteMatter
   m_EditorClassIdentifier: 
   DrinkContents: {x: 3, y: 6, z: 0}
-  DrinkSprite: {fileID: 0}
+  DrinkSprite: {fileID: 21300000, guid: 210d62ba8ee9dc94bb479de5293878a4, type: 3}
   DrinkName: White Matter
+  DrinkFlavorText: +5 intelligence

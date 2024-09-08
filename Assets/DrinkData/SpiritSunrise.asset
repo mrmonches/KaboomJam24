@@ -13,5 +13,6 @@ MonoBehaviour:
   m_Name: SpiritSunrise
   m_EditorClassIdentifier: 
   DrinkContents: {x: 0, y: 5, z: 0}
-  DrinkSprite: {fileID: 0}
+  DrinkSprite: {fileID: 21300000, guid: a4bb97e61e26e164aae3efc0f49b72a8, type: 3}
   DrinkName: Spirit Sunrise
+  DrinkFlavorText: Here comes the sun

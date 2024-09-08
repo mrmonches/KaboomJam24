@@ -13,5 +13,6 @@ MonoBehaviour:
   m_Name: Nat's Drink
   m_EditorClassIdentifier: 
   DrinkContents: {x: 3, y: 0, z: 0}
-  DrinkSprite: {fileID: 0}
-  DrinkName: Nat's Drink
+  DrinkSprite: {fileID: 21300000, guid: d0835923b3ad34342ab376bcc223e179, type: 3}
+  DrinkName: Eternal Nat
+  DrinkFlavorText: An enternal fruity aftertaste

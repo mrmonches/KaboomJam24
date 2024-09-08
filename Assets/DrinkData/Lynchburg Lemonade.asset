@@ -12,6 +12,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 39e7a5b59095d1e4b8c7cfc26ca46d77, type: 3}
   m_Name: Lynchburg Lemonade
   m_EditorClassIdentifier: 
-  DrinkContents: {x: 0, y: 5, z: 4}
-  DrinkSprite: {fileID: 0}
-  DrinkName: Lynchburg Lemonade
+  DrinkContents: {x: 0, y: 4, z: 4}
+  DrinkSprite: {fileID: 21300000, guid: e0e3f6f983f572f4f9c6a0525cc136b7, type: 3}
+  DrinkName: Lynchbug Lemonade
+  DrinkFlavorText: Pucker up buttercup

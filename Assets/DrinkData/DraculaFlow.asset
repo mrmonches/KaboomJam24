@@ -13,5 +13,6 @@ MonoBehaviour:
   m_Name: DraculaFlow
   m_EditorClassIdentifier: 
   DrinkContents: {x: 0, y: 20, z: 0}
-  DrinkSprite: {fileID: 0}
-  DrinkName: Dracula Flow
+  DrinkSprite: {fileID: 21300000, guid: cf01160da2b87094ab198c0b1fe22705, type: 3}
+  DrinkName: Draclulem
+  DrinkFlavorText: Not to be confused with the ingredient
