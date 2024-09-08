@@ -123,7 +123,7 @@ public class DrinkMenuManager : MonoBehaviour
             if (count < currentDrink.Count)
             {
                 go.SetActive(true);
-                go.GetComponent<Image>().color = currentDrink[count].getCol();
+                go.GetComponent<Image>().sprite = currentDrink[count].getSprite();
             }
             else
             {
