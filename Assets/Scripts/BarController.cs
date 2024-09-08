@@ -41,7 +41,7 @@ public class BarController : MonoBehaviour
 
     private void OnTriggerExit2D(Collider2D collision)
     {
-        if (collision.gameObject.GetComponent<PlayerPlatformerController>() == playerController)
+        if (collision.gameObject.GetComponent<PlayerPlatformerController>() == playerController && playerController != null)
         {
             playerController.InteractiveUIStatus(false);
 

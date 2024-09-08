@@ -10,6 +10,8 @@ public class GameManager : MonoBehaviour
     [SerializeField] public int money;
     [SerializeField] public int maxMoney;
 
+    [SerializeField] private List<Sprite> portraits;
+
     [SerializeField] private List<DrinkData> drinks;
     [SerializeField] private List<DrinkData> availableDrinks;
     [SerializeField] private List<CustomerController> customers;
@@ -20,7 +22,9 @@ public class GameManager : MonoBehaviour
         foreach (CustomerController customer in customers)
         {
             AssignDrinks(customer);
-
+            int rand = Random.Range(0, portraits.Count);
+            customer.portrait = portraits[rand];
+            portraits.RemoveAt(rand);
         }
     }
     public void AssignDrinks (CustomerController customer)
