@@ -11,6 +11,8 @@ public class CustomerController : MonoBehaviour
 
     [SerializeField] private DrinkData order;
     [SerializeField] private float TimeUntilBack = 3f;
+
+    public Sprite portrait;
     public void setOrder(DrinkData order)
     {
         this.order = order;

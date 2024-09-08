@@ -46,7 +46,6 @@ public class DrinkMenuManager : MonoBehaviour
     [SerializeField] private GameObject orderSourText;
     [SerializeField] private GameObject orderSaltyText;
 
-
     private int[] inventory = new int[6];
     [SerializeField] private TMP_Text[] inventoryTexts; 
 
@@ -196,7 +195,7 @@ public class DrinkMenuManager : MonoBehaviour
         FindObjectOfType<GameManager>().HideMoney();
         if (customer.getOrder().GetDrinkSprite() != null) 
         {
-            customerPortrait.GetComponent<Image>().sprite = customer.getOrder().GetDrinkSprite();
+            customerPortrait.GetComponent<Image>().sprite = customer.portrait;
         }
         UpdateText();
     }
