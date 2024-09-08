@@ -12,7 +12,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 39e7a5b59095d1e4b8c7cfc26ca46d77, type: 3}
   m_Name: FroggyDrink
   m_EditorClassIdentifier: 
-  DrinkContents: {x: 4, y: 1, z: 4}
+  DrinkContents: {x: 3, y: 2, z: 0}
   DrinkSprite: {fileID: 0}
   DrinkName: Froggy Drink
   DrinkFlavorText: Like the chair
