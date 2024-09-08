@@ -7,8 +7,8 @@ using UnityEngine;
 
 public class GameManager : MonoBehaviour
 {
-    [SerializeField] private int money;
-    [SerializeField] private int maxMoney;
+    [SerializeField] public int money;
+    [SerializeField] public int maxMoney;
 
     [SerializeField] private List<DrinkData> drinks;
     [SerializeField] private List<DrinkData> availableDrinks;
