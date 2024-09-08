@@ -5621,6 +5621,7 @@ MonoBehaviour:
   liquidOut: {fileID: 8300000, guid: 7a50b5b342db84c4f9e7e6766513a493, type: 3}
   shakeCorrectAudio: {fileID: 8300000, guid: 1bc35db4eaab27e40ae307d90f0d7d4f, type: 3}
   shakeIncorrectAudio: {fileID: 8300000, guid: 60b1b576e853a2a42afa7fc56fd46c65, type: 3}
+  openMenu: {fileID: 8300000, guid: 91173ab4c685ed74499c640fb6648b44, type: 3}
 --- !u!1 &6884217495244577145
 GameObject:
   m_ObjectHideFlags: 0

@@ -63,6 +63,7 @@ public class DrinkMenuManager : MonoBehaviour
     [SerializeField] private AudioClip liquidOut;
     [SerializeField] private AudioClip shakeCorrectAudio;
     [SerializeField] private AudioClip shakeIncorrectAudio;
+    [SerializeField] private AudioClip openMenu;
 
     // Start is called before the first frame update
     private void OnEnable()
@@ -82,8 +83,8 @@ public class DrinkMenuManager : MonoBehaviour
         {
             FindObjectOfType<TutorialManager>().EnablePopup(1);
         }
-        
 
+        _audioSource.PlayOneShot(openMenu);
     }
 
     public void AddIngredient (int IngredientEnumNumber)
@@ -245,13 +246,14 @@ public class DrinkMenuManager : MonoBehaviour
             }
             else
             {
-                _audioSource.PlayOneShot(shakeIncorrectAudio);
                 if (!isTutorial)
                 {
+                    FindObjectOfType<PlayerPlatformerController>().gameObject.GetComponent<AudioSource>().PlayOneShot(shakeIncorrectAudio);
                     CloseMenu();
                 }
                 else
                 {
+                    _audioSource.PlayOneShot(shakeIncorrectAudio);
                     currentDrink.Clear();
                     UpdateText();
                     FindObjectOfType<TutorialManager>().incorrectIngredients();
