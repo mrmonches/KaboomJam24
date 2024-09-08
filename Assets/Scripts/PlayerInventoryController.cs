@@ -46,5 +46,10 @@ public class PlayerInventoryController : MonoBehaviour
         int index = Random.Range(0, 6);
 
         InventoryContents[index] -= HazardDecrement;
+
+        if (InventoryContents[index] < 0)
+        {
+            InventoryContents[index] = 0;
+        }
     }
 }
