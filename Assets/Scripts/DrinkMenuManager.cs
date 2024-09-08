@@ -49,11 +49,21 @@ public class DrinkMenuManager : MonoBehaviour
     [SerializeField] private Image drink;
 
     [SerializeField] private bool isTutorial;
-    public bool canClickIngredients;
-    public bool canClickGlass;
-    public bool canShake;
-    public bool canClose;
-    
+    [HideInInspector] public bool canClickIngredients;
+    [HideInInspector] public bool canClickGlass;
+    [HideInInspector] public bool canShake;
+    [HideInInspector] public bool canClose;
+
+    [SerializeField] private AudioSource _audioSource;
+    [SerializeField] private AudioClip goopyIn;
+    [SerializeField] private AudioClip dustyIn;
+    [SerializeField] private AudioClip liquidIn;
+    [SerializeField] private AudioClip goopyOut;
+    [SerializeField] private AudioClip dustyOut;
+    [SerializeField] private AudioClip liquidOut;
+    [SerializeField] private AudioClip shakeCorrectAudio;
+    [SerializeField] private AudioClip shakeIncorrectAudio;
+
     // Start is called before the first frame update
     private void OnEnable()
     {
@@ -97,6 +107,31 @@ public class DrinkMenuManager : MonoBehaviour
                     possibleIngredients[IngredientEnumNumber].getSpicy());*/
                 inventory[IngredientEnumNumber]--;
 
+                switch(IngredientEnumNumber)
+                {
+                    case 0:
+                        _audioSource.PlayOneShot(liquidIn);
+                        break;
+                    case 1:
+                        _audioSource.PlayOneShot(dustyIn);
+                        break;
+                    case 2:
+                        _audioSource.PlayOneShot(liquidIn);
+                        break;
+                    case 3:
+                        _audioSource.PlayOneShot(goopyIn);
+                        break;
+                    case 4:
+                        _audioSource.PlayOneShot(goopyIn);
+                        break;
+                    case 5:
+                        _audioSource.PlayOneShot(dustyIn);
+                        break;
+                    default:
+                        Debug.Log("fuck you");
+                        break;
+                }
+
                 UpdateText();
             }
 
@@ -111,6 +146,30 @@ public class DrinkMenuManager : MonoBehaviour
         if (!isTutorial || canClickGlass)
         {
             inventory[(int)currentDrink[positionToRemove].getIngType()]++;
+            switch ((int)currentDrink[positionToRemove].getIngType())
+            {
+                case 0:
+                    _audioSource.PlayOneShot(liquidOut);
+                    break;
+                case 1:
+                    _audioSource.PlayOneShot(dustyOut);
+                    break;
+                case 2:
+                    _audioSource.PlayOneShot(liquidOut);
+                    break;
+                case 3:
+                    _audioSource.PlayOneShot(goopyOut);
+                    break;
+                case 4:
+                    _audioSource.PlayOneShot(goopyOut);
+                    break;
+                case 5:
+                    _audioSource.PlayOneShot(dustyOut);
+                    break;
+                default:
+                    Debug.Log("fuck you");
+                    break;
+            }
             currentDrink.RemoveAt(positionToRemove);
             UpdateText();
 
@@ -181,10 +240,12 @@ public class DrinkMenuManager : MonoBehaviour
             
             if (currentDrinkStats == currentOrder)
             {
+                _audioSource.PlayOneShot(shakeCorrectAudio);
                 OpenDrinkCompleteMenu();
             }
             else
             {
+                _audioSource.PlayOneShot(shakeIncorrectAudio);
                 if (!isTutorial)
                 {
                     CloseMenu();
