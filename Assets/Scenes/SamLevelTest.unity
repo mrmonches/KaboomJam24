@@ -952,7 +952,7 @@ BoxCollider2D:
   m_IsTrigger: 1
   m_UsedByEffector: 0
   m_UsedByComposite: 0
-  m_Offset: {x: -0.00000023841858, y: -0.6770556}
+  m_Offset: {x: -0.00000023841858, y: -0.21469659}
   m_SpriteTilingProperty:
     border: {x: 0, y: 0, z: 0, w: 0}
     pivot: {x: 0, y: 0}
@@ -963,7 +963,7 @@ BoxCollider2D:
     adaptiveTiling: 0
   m_AutoTiling: 0
   serializedVersion: 2
-  m_Size: {x: 7.360995, y: 2.2778723}
+  m_Size: {x: 7.360995, y: 3.20259}
   m_EdgeRadius: 0
 --- !u!1001 &150626635
 PrefabInstance:
@@ -35356,7 +35356,7 @@ GameObject:
   - component: {fileID: 1615527734}
   - component: {fileID: 1615527733}
   m_Layer: 0
-  m_Name: GameObject
+  m_Name: CameraBounds
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -35377,7 +35377,7 @@ PolygonCollider2D:
     m_Bits: 0
   m_ExcludeLayers:
     serializedVersion: 2
-    m_Bits: 0
+    m_Bits: 4294967295
   m_LayerOverridePriority: 0
   m_ForceSendLayers:
     serializedVersion: 2
@@ -35406,11 +35406,11 @@ PolygonCollider2D:
   m_AutoTiling: 0
   m_Points:
     m_Paths:
-    - - {x: 0, y: 1}
+    - - {x: 38.63322, y: 15.088531}
       - {x: -22.89677, y: 15.102053}
       - {x: -22.714878, y: -12.654576}
-      - {x: 0.58778536, y: -0.80901694}
-      - {x: 0.9510565, y: 0.30901712}
+      - {x: -0.8276466, y: -12.656603}
+      - {x: 38.68444, y: -12.618031}
   m_UseDelaunayMesh: 0
 --- !u!4 &1615527734
 Transform:
@@ -37548,7 +37548,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: f453f694addf4275988fac205bc91968, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  m_BoundingShape2D: {fileID: 0}
+  m_BoundingShape2D: {fileID: 1615527733}
   m_Damping: 0.5
   m_MaxWindowSize: -1
 --- !u!1001 &1997744015
