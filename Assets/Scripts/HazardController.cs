@@ -10,6 +10,11 @@ public class HazardController : MonoBehaviour
         if (incomingCollision.CompareTag("Player"))
         {
             incomingCollision.GetComponent<PlayerPlatformerController>().ActivateIFrames();
+
+            //Play sound
+
+            //Play animation
+
         }
     }
 }
