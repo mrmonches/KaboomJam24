@@ -1,6 +1,7 @@
 using System.Collections.Generic;
 using TMPro;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 
 public class PauseMenuManager : MonoBehaviour
 {
@@ -21,6 +22,20 @@ public class PauseMenuManager : MonoBehaviour
             print(i);
             IngredientList[i].text = ("" + inventoryController.InventoryContents[i]);
         }
+    }
+
+    public void ReloadLevel()
+    {
+        Time.timeScale = 1f;
+
+        SceneManager.LoadScene("SamLevelTest");
+    }
+
+    public void MainMenuLoad()
+    {
+        Time.timeScale = 1f;
+
+        SceneManager.LoadScene("MainMenu");
     }
 
     private void OnDisable()
