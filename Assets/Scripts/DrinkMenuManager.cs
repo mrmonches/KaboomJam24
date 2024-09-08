@@ -222,13 +222,14 @@ public class DrinkMenuManager : MonoBehaviour
         if (!isTutorial)
         {
             currentCustomer.isOrdering = false;
-            FindObjectOfType<PlayerPlatformerController>().ManageDrinkMenuStatus(null);
             FindObjectOfType<GameManager>().ShowMoney();
         }
         if (isTutorial && !TutorialManager.NinthPopupDone)
         {
+            TutorialManager.NinthPopupDone = true;
             FindObjectOfType<TutorialManager>().NextPopup(11);
         }
+        FindObjectOfType<PlayerPlatformerController>().ManageDrinkMenuStatus(null);
     }
 
     public void NewOrder(CustomerController customer)
