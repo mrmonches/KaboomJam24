@@ -32516,6 +32516,14 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 246606999366831252, guid: ff4ee980122deaf4591f2d282cf37ef8, type: 3}
+      propertyPath: m_Enabled
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 1221155804571678703, guid: ff4ee980122deaf4591f2d282cf37ef8, type: 3}
+      propertyPath: m_Enabled
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 1432786039782767768, guid: ff4ee980122deaf4591f2d282cf37ef8, type: 3}
       propertyPath: Circle
       value: 
@@ -32556,6 +32564,26 @@ PrefabInstance:
       propertyPath: InteractionController
       value: 
       objectReference: {fileID: 1079865919}
+    - target: {fileID: 2178805649971964411, guid: ff4ee980122deaf4591f2d282cf37ef8, type: 3}
+      propertyPath: m_IsActive
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 4529908054719001487, guid: ff4ee980122deaf4591f2d282cf37ef8, type: 3}
+      propertyPath: m_Enabled
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 5253154386201365681, guid: ff4ee980122deaf4591f2d282cf37ef8, type: 3}
+      propertyPath: m_Enabled
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 5657758747187107570, guid: ff4ee980122deaf4591f2d282cf37ef8, type: 3}
+      propertyPath: m_IsActive
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 6298686554239922881, guid: ff4ee980122deaf4591f2d282cf37ef8, type: 3}
+      propertyPath: m_IsActive
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 7817397098169624107, guid: ff4ee980122deaf4591f2d282cf37ef8, type: 3}
       propertyPath: m_Name
       value: Player (1)

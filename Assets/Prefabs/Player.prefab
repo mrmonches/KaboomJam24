@@ -359,7 +359,7 @@ Transform:
   - {fileID: 2312562271326898989}
   - {fileID: 5872788269482668092}
   m_Father: {fileID: 0}
-  m_RootOrder: 0
+  m_RootOrder: 1
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!212 &5253154386201365681
 SpriteRenderer:
@@ -531,7 +531,7 @@ MonoBehaviour:
   JumpForce: 10
   SprintMultiplier: 1.5
   MaxFallSpeed: 10
-  GravityMultiplier: 1
+  GravityMultiplier: 1.01
   defaultGravity: 2.5
   InvinsibilityTimer: 3
   invinsibilityCounter: 0
@@ -548,6 +548,9 @@ MonoBehaviour:
   JumpClip: {fileID: 0}
   opacityChange: 0.1
   opacityTimer: 0.2
+  IngredientOne: {fileID: 2280227215797744028}
+  IngredientTwo: {fileID: 8796271098757246457}
+  IngredientThree: {fileID: 4704303229284948825}
 --- !u!114 &3077455885297193545
 MonoBehaviour:
   m_ObjectHideFlags: 0
