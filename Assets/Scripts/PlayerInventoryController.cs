@@ -35,6 +35,10 @@ public class PlayerInventoryController : MonoBehaviour
         {
             InventoryContents[i] = MaxItemAmount;
         }
+        if (FindObjectOfType<TutorialManager>() != null)
+        {
+            FindObjectOfType<TutorialManager>().NextPopup(13);
+        }
     }
 
     public void LoseItems()

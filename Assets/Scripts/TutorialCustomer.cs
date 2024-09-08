@@ -1,8 +1,8 @@
 using System.Collections;
+using System.Collections.Generic;
 using UnityEngine;
-using UnityEngine.UIElements;
 
-public class CustomerController : MonoBehaviour
+public class TutorialCustomer : MonoBehaviour
 {
     [SerializeField] private PlayerPlatformerController playerController;
 
@@ -21,13 +21,9 @@ public class CustomerController : MonoBehaviour
     public IEnumerator ComeBack()
     {
         isGone = true;
-        GetComponent<SpriteRenderer>().color = new Color (0, 0, 0, 0.5f);
+        GetComponent<SpriteRenderer>().color = new Color(0, 0, 0, 0.5f);
         yield return new WaitForSecondsRealtime(TimeUntilBack);
-        if (FindObjectOfType<TutorialManager>() == null )
-        {
-            FindObjectOfType<GameManager>().AssignDrinks(this);
-        }
-        
+        //FindObjectOfType<GameManager>().AssignDrinks(this);
         isGone = false;
         GetComponent<SpriteRenderer>().color = new Color(255, 255, 255, 1);
 
@@ -69,7 +65,7 @@ public class CustomerController : MonoBehaviour
         if (playerController != null && playerController.GetInteractionStatus() && !isOrdering && !isGone)
         {
             isOrdering = true;
-            playerController.ManageDrinkMenuStatus(this);
+            //playerController.ManageDrinkMenuStatus(this);
         }
     }
 }
