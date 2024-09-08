@@ -3448,6 +3448,7 @@ MonoBehaviour:
   IngredientOne: {fileID: 0}
   IngredientTwo: {fileID: 0}
   IngredientThree: {fileID: 0}
+  EmptyParent: {fileID: 0}
 --- !u!114 &749506128
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -32545,6 +32546,10 @@ PrefabInstance:
       value: 10
       objectReference: {fileID: 0}
     - target: {fileID: 1846888877722417260, guid: ff4ee980122deaf4591f2d282cf37ef8, type: 3}
+      propertyPath: EmptyParent
+      value: 
+      objectReference: {fileID: 6242831535534172388, guid: ec60c47fbccb3a54cba4854dc86ffc1e, type: 3}
+    - target: {fileID: 1846888877722417260, guid: ff4ee980122deaf4591f2d282cf37ef8, type: 3}
       propertyPath: IngredientOne
       value: 
       objectReference: {fileID: 1356328433}
@@ -54789,8 +54794,8 @@ PrefabInstance:
       insertIndex: -1
       addedObject: {fileID: 1865229213}
   m_SourcePrefab: {fileID: 100100000, guid: 5b9a73ac6adce494498954fd5d9d8a64, type: 3}
---- !u!4 &1175538763119460738 stripped
-Transform:
+--- !u!224 &1175538763119460738 stripped
+RectTransform:
   m_CorrespondingSourceObject: {fileID: 2015205693124672763, guid: 5b9a73ac6adce494498954fd5d9d8a64, type: 3}
   m_PrefabInstance: {fileID: 1175538763119460737}
   m_PrefabAsset: {fileID: 0}

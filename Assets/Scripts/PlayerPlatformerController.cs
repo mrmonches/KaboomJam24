@@ -67,6 +67,7 @@ public class PlayerPlatformerController : MonoBehaviour
     private float opacityCounter;
 
     [SerializeField] private Animator IngredientOne, IngredientTwo, IngredientThree;
+    [SerializeField] private GameObject EmptyParent;
 
     private void Awake()
     {
@@ -200,6 +201,12 @@ public class PlayerPlatformerController : MonoBehaviour
             invinsibilityCounter = InvinsibilityTimer;
 
             decreaseOpacity = true;
+
+            GameObject Parent = Instantiate(EmptyParent, transform.position, Quaternion.identity);
+
+            IngredientOne.transform.parent = Parent.transform;
+            IngredientTwo.transform.parent = Parent.transform;
+            IngredientThree.transform.parent = Parent.transform;
 
             IngredientOne.SetTrigger("Hurt");
             IngredientTwo.SetTrigger("Hurt");
