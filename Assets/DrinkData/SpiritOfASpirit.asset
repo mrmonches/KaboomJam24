@@ -12,7 +12,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 39e7a5b59095d1e4b8c7cfc26ca46d77, type: 3}
   m_Name: SpiritOfASpirit
   m_EditorClassIdentifier: 
-  DrinkContents: {x: 0, y: 0, z: 0}
+  DrinkContents: {x: 1, y: 6, z: 0}
   DrinkSprite: {fileID: 21300000, guid: 34352020501198b4aaf2189311ef8a92, type: 3}
-  DrinkName: Spirit of a Spirit
-  DrinkFlavorText: Here lies a good drink
+  DrinkName: Dead man's party
+  DrinkFlavorText: Who could ask for more?
