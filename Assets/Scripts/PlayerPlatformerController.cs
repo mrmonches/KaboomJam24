@@ -162,7 +162,7 @@ public class PlayerPlatformerController : MonoBehaviour
 
             if (canUI)
             {
-            //    InteractionController.ProgressCircle();
+                InteractionController.ProgressCircle();
             }
         }
     }
@@ -221,6 +221,11 @@ public class PlayerPlatformerController : MonoBehaviour
     public bool GetInteractionStatus()
     {
         return isInteracting;
+    }
+
+    public void SetInteractionStatus(bool status)
+    {
+        isInteracting = status;
     }
 
     private void GroundCheck()
