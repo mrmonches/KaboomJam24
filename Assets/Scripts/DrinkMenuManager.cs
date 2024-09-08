@@ -223,6 +223,7 @@ public class DrinkMenuManager : MonoBehaviour
         {
             currentCustomer.isOrdering = false;
             FindObjectOfType<PlayerPlatformerController>().ManageDrinkMenuStatus(null);
+            FindObjectOfType<GameManager>().ShowMoney();
         }
         if (isTutorial && !TutorialManager.NinthPopupDone)
         {
