@@ -1,11 +1,20 @@
+using System.Collections;
 using System.Collections.Generic;
+using System.Data;
+using System.Net.NetworkInformation;
+using System.Runtime.CompilerServices;
+using System.Threading;
 using TMPro;
+using Unity.VisualScripting;
+using UnityEditor;
+using UnityEditor.ShaderGraph.Drawing;
 using UnityEngine;
 using UnityEngine.UI;
 
-public class DrinkMenuManager : MonoBehaviour
+public class TutorialDrinkManager : MonoBehaviour
 {
-    [HideInInspector, System.Serializable] public enum IngredientTypes
+    [HideInInspector, System.Serializable]
+    public enum IngredientTypes
     {
         Draculum,
         Orange20,
@@ -15,13 +24,13 @@ public class DrinkMenuManager : MonoBehaviour
         Ashes
 
     }
-    
-    [SerializeField, Header("Enter all the possible ingredients here"), 
-        Tooltip("Enum is ingredient name, then add the ingredient's stats into the three digits")] 
+
+    [SerializeField, Header("Enter all the possible ingredients here"),
+        Tooltip("Enum is ingredient name, then add the ingredient's stats into the three digits")]
     private List<Ingredient> possibleIngredients = new List<Ingredient>();
     [SerializeField, Header("Enter how much money each ingredient is worth here")] private int IngredientProfit;
-    
-    
+
+
     [SerializeField, Header("Debugging and refrences")] private List<Ingredient> currentDrink = new List<Ingredient>();
 
     //sweet is x, sour is y, spicy is z
@@ -39,7 +48,7 @@ public class DrinkMenuManager : MonoBehaviour
     [SerializeField] private GameObject orderSaltyText;
 
     private int[] inventory = new int[6];
-    [SerializeField] private TMP_Text[] inventoryTexts; 
+    [SerializeField] private TMP_Text[] inventoryTexts;
 
     [SerializeField] private CustomerController currentCustomer;
 
@@ -48,12 +57,6 @@ public class DrinkMenuManager : MonoBehaviour
     [SerializeField] private TMP_Text drinkNameText;
     [SerializeField] private Image drink;
 
-    [SerializeField] private bool isTutorial;
-    public bool canClickIngredients;
-    public bool canClickGlass;
-    public bool canShake;
-    public bool canClose;
-    
     // Start is called before the first frame update
     private void OnEnable()
     {
@@ -67,58 +70,36 @@ public class DrinkMenuManager : MonoBehaviour
             go.SetActive(false);
         }
         UpdateText();
-        
-        if (isTutorial && !TutorialManager.SecondPopupDone)
-        {
-            FindObjectOfType<TutorialManager>().EnablePopup(1);
-        }
-        
 
     }
 
-    public void AddIngredient (int IngredientEnumNumber)
+    public void AddIngredient(int IngredientEnumNumber)
     {
-        if (!isTutorial || canClickIngredients)
+        if (currentDrink.Count < 5 && inventory[IngredientEnumNumber] > 0)
         {
-            if (currentDrink.Count < 5 && inventory[IngredientEnumNumber] > 0)
+            int count = 0;
+            while (count < currentDrink.Count)
             {
-                int count = 0;
-                while (count < currentDrink.Count)
+                if (IngredientEnumNumber >= (int)currentDrink[count].getIngType())
                 {
-                    if (IngredientEnumNumber >= (int)currentDrink[count].getIngType())
-                    {
-                        break;
-                    }
-                    count++;
+                    break;
                 }
-                currentDrink.Insert(count, possibleIngredients[IngredientEnumNumber]);
-                /*currentDrinkStats += new Vector3(possibleIngredients[IngredientEnumNumber].getSweet(),
-                    possibleIngredients[IngredientEnumNumber].getSour(),
-                    possibleIngredients[IngredientEnumNumber].getSpicy());*/
-                inventory[IngredientEnumNumber]--;
-
-                UpdateText();
+                count++;
             }
+            currentDrink.Insert(count, possibleIngredients[IngredientEnumNumber]);
+            /*currentDrinkStats += new Vector3(possibleIngredients[IngredientEnumNumber].getSweet(),
+                possibleIngredients[IngredientEnumNumber].getSour(),
+                possibleIngredients[IngredientEnumNumber].getSpicy());*/
+            inventory[IngredientEnumNumber]--;
 
-            if (isTutorial && !TutorialManager.FifthPopupDone)
-            {
-                FindObjectOfType<TutorialManager>().NextPopup(6);
-            }
+            UpdateText();
         }
     }
     public void RemoveIngredient(int positionToRemove)
     {
-        if (!isTutorial || canClickGlass)
-        {
-            inventory[(int)currentDrink[positionToRemove].getIngType()]++;
-            currentDrink.RemoveAt(positionToRemove);
-            UpdateText();
-
-            if (isTutorial && !TutorialManager.SixthPopupDone)
-            {
-                FindObjectOfType<TutorialManager>().NextPopup(8);
-            }
-        }
+        inventory[(int)currentDrink[positionToRemove].getIngType()]++;
+        currentDrink.RemoveAt(positionToRemove);
+        UpdateText();
     }
     private void UpdateText()
     {
@@ -154,58 +135,39 @@ public class DrinkMenuManager : MonoBehaviour
     }
     public void CompleteDrink()
     {
-        if (!isTutorial || canShake)
+        if (currentDrinkStats.x < 0)
         {
-            if (currentDrinkStats.x < 0)
-            {
-                currentDrinkStats.x = 0;
-            }
-            if (currentDrinkStats.y < 0)
-            {
-                currentDrinkStats.y = 0;
-            }
-            if (currentDrinkStats.z < 0)
-            {
-                currentDrinkStats.z = 0;
-            }
+            currentDrinkStats.x = 0;
+        }
+        if (currentDrinkStats.y < 0)
+        {
+            currentDrinkStats.y = 0;
+        }
+        if (currentDrinkStats.z < 0)
+        {
+            currentDrinkStats.z = 0;
+        }
+        Debug.Log(currentDrinkStats);
 
-            if (!isTutorial || (isTutorial && currentDrinkStats == currentOrder))
-            {
-                for (int i = 0; i < 6; i++)
-                {
-                    FindObjectOfType<PlayerInventoryController>().InventoryContents[i] = inventory[i];
-                }
-            }
-            
+        for (int i = 0; i < 6; i++)
+        {
+            FindObjectOfType<PlayerInventoryController>().InventoryContents[i] = inventory[i];
+        }
 
-            
-            if (currentDrinkStats == currentOrder)
-            {
-                OpenDrinkCompleteMenu();
-            }
-            else
-            {
-                if (!isTutorial)
-                {
-                    CloseMenu();
-                }
-                else
-                {
-                    currentDrink.Clear();
-                    UpdateText();
-                    FindObjectOfType<TutorialManager>().incorrectIngredients();
-                }
-            }
+        if (currentDrinkStats == currentOrder)
+        {
+            OpenDrinkCompleteMenu();
+        }
+        else
+        {
+            CloseMenu();
         }
     }
     public void CloseDrinkCompleteMenu()
     {
         drinkCompleteMenu.SetActive(false);
-        if (!isTutorial)
-        {
-            FindObjectOfType<GameManager>().DrinkCompleted(IngredientProfit * currentDrink.Count);
-            FindObjectOfType<GameManager>().ShowMoney();
-        }
+        FindObjectOfType<GameManager>().DrinkCompleted(IngredientProfit * currentDrink.Count);
+        FindObjectOfType<GameManager>().ShowMoney();
         currentCustomer.CustomerComplete();
         CloseMenu();
     }
@@ -216,18 +178,11 @@ public class DrinkMenuManager : MonoBehaviour
         drinkNameText.text = currentCustomer.getOrder().getDrinkName();
         flavorText.text = currentCustomer.getOrder().getDrinkFlavorText();
     }
-    
+
     public void CloseMenu()
     {
-        if (!isTutorial || canClose)
-        {
-            currentCustomer.isOrdering = false;
-            FindObjectOfType<PlayerPlatformerController>().ManageDrinkMenuStatus(null);
-        }
-        if (isTutorial && !TutorialManager.NinthPopupDone)
-        {
-            FindObjectOfType<TutorialManager>().NextPopup(11);
-        }
+        currentCustomer.isOrdering = false;
+        FindObjectOfType<PlayerPlatformerController>().ManageDrinkMenuStatus(null);
     }
 
     public void NewOrder(CustomerController customer)
@@ -238,14 +193,8 @@ public class DrinkMenuManager : MonoBehaviour
         orderSweetText.GetComponent<TMP_Text>().text = currentOrder.x.ToString();
         orderSourText.GetComponent<TMP_Text>().text = currentOrder.y.ToString();
         orderSaltyText.GetComponent<TMP_Text>().text = currentOrder.z.ToString();
-
-        if (!isTutorial)
-        {
-            FindObjectOfType<GameManager>().HideMoney();
-        }
-        
-        
-        if (customer.getOrder().GetDrinkSprite() != null) 
+        FindObjectOfType<GameManager>().HideMoney();
+        if (customer.getOrder().GetDrinkSprite() != null)
         {
             customerPortrait.GetComponent<Image>().sprite = customer.portrait;
         }
