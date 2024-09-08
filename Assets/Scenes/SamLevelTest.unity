@@ -33057,7 +33057,22 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   money: 0
   maxMoney: 500
-  portraits: []
+  portraits:
+  - {fileID: 21300000, guid: 8b17fda1806bcf442b78c22fe5d3dfdb, type: 3}
+  - {fileID: 21300000, guid: b200ed8aadce0304c8b3d5e5583fdf05, type: 3}
+  - {fileID: 21300000, guid: 6c862338443729140840e4086e391283, type: 3}
+  - {fileID: 21300000, guid: 8b17fda1806bcf442b78c22fe5d3dfdb, type: 3}
+  - {fileID: 21300000, guid: 06ac5221e10a0394695a92cc009ab031, type: 3}
+  - {fileID: 21300000, guid: 02c534bb8a365d24d8b9e999fac33e09, type: 3}
+  - {fileID: 21300000, guid: 041f8326f799f264a8240fe99496e31e, type: 3}
+  - {fileID: 21300000, guid: 761d355d2ea309c468134050ce591b7f, type: 3}
+  - {fileID: 21300000, guid: 61e510dbaa0e5bb47ae231e963a5520f, type: 3}
+  - {fileID: 21300000, guid: 622d4d0d5c0cc2b49b9267428bde2ba4, type: 3}
+  - {fileID: 21300000, guid: 2394f3a499dd9f948893048fd7026344, type: 3}
+  - {fileID: 21300000, guid: 34647914646c68c4498dea42aa9acdca, type: 3}
+  - {fileID: 21300000, guid: b10897949a0a0ec4c91a5fa90311e8db, type: 3}
+  - {fileID: 21300000, guid: 632dd0a5856a00542a47886d9b65900a, type: 3}
+  - {fileID: 21300000, guid: 88e2c512aa4b5484389ef3fd99fc4300, type: 3}
   drinks:
   - {fileID: 11400000, guid: 3ce772ab61c622d4e899702433a1cfaa, type: 2}
   - {fileID: 11400000, guid: 081b02bb385aa154cb25055c828f4e68, type: 2}
